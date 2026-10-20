@@ -1,3 +1,6 @@
+% Load the local Type1 font map so cm/cmsy/cmmi fonts embed as PFB.
+\pdfoutput=1
+\pdfmapfile{pdftex.map}
 \documentclass[10pt]{article}
 \usepackage[pdftex]{graphicx}
 \usepackage{amsmath,amssymb}
@@ -8,6 +11,26 @@
 \setlength{\textheight}{8.7in}
 \setlength{\parskip}{2pt}
 \renewcommand{\arraystretch}{1.15}
+% In this minimal TeX tree the default \labelitemi resolves to an EC/tcrm
+% bitmap font that renders as a giant filled circle overlapping the text.
+% Use the Type1 cmsy bullet from OT1 instead.
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{--}
+% Long \verb|...| literals make several paragraphs unbreakable; allow extra
+% stretch so lines find break points instead of sticking into the margin.
+\emergencystretch=3em
+% Avoid ugly full-vertical-stretch gaps on short pages.
+\raggedbottom
+% Let floats fill pages instead of queueing up two or three pages late.
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.75}
+\renewcommand{\textfraction}{0.12}
+\setlength{\floatsep}{9pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 3pt}
+\setlength{\intextsep}{9pt plus 2pt minus 2pt}
 
 \title{\textbf{clm-mem: A Zero-Training Memory Harness for Open Chat Models}\\[6pt]
 \large Self-classified long/short-term memory with deterministic three-phase eviction}
@@ -56,7 +79,7 @@ What we deliberately drop is unrestricted editing of past turns: instead, a dete
 
 \section{System design}
 \subsection{Blocks and memory tiers}
-Every message in the live window is a \texttt{Block}: an \texttt{id}, \texttt{role}, \texttt{content}, a \texttt{tag} from $\{\text{longterm}, \text{shortterm}, \text{transient}\}$, a creation \texttt{turn} (the FIFO key), and a \texttt{pinned} flag for the system prompt. This is analogous to the paper's serialized \verb|[[CTX_TURN]]| turns. Long-term blocks are durable facts, decisions, identifiers and specs; short-term blocks are working state useful ``for a while''; transient blocks are filler.
+Every message in the live window is a \texttt{Block}: an \texttt{id}, \texttt{role}, \texttt{content}, a \texttt{tag} from $\{$\text{longterm}, \text{shortterm}, \text{transient}$\}$, a creation \texttt{turn} (the FIFO key), and a \texttt{pinned} flag for the system prompt. This is analogous to the paper's serialized \verb|[[CTX_TURN]]| turns. Long-term blocks are durable facts, decisions, identifiers and specs; short-term blocks are working state useful ``for a while''; transient blocks are filler.
 
 \subsection{Self-classification without retraining}
 Two paths, selectable via \texttt{classify\_mode}:
@@ -66,10 +89,18 @@ Two paths, selectable via \texttt{classify\_mode}:
 \end{itemize}
 Optionally, a typed decision service (SystemOne) answers batched \emph{choice} questions for classification and \emph{noul} confidence questions as an eviction backstop: before any block is dropped, the engine asks whether it is safe to remove; blocks below the threshold $\tau$ are kept (``backstop kept \#id''). On API error the engine falls back to the planned eviction.
 
+% Declared here (first reference is above) so the schematic can float onto
+% page 4 instead of two pages late.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_arch.pdf}
+\caption{Data flow of one harness step: intake (pre-classify, evict-before-generate), core loop (live window $\to$ decode $\to$ inline tag split $\to$ return), relabel and eviction engine with backstop, and the archive. Dashed edge: reinject path from archive back into the live window.}\label{fig:arch}
+\end{figure}
+
 \subsection{Three-phase eviction engine}
 When the window exceeds $B=\texttt{max\_context\_tokens}$, phases run in order until under budget (Table~\ref{tab:phases}). Phase 1 deletes transient blocks outside a trailing coherence window of \texttt{keep\_recent\_turns}. Phase 2 evicts short-term \emph{FIFO in rounds}: each round keeps the newest fraction $\kappa=\texttt{shortterm\_keep\_pct}$ and deletes the oldest, repeating while over budget (max 10 rounds to guarantee progress). Phase 3 offloads oldest long-term blocks to \texttt{archive.jsonl} and replaces them with evictable pointer stubs \verb|[offloaded longterm #id -> archive.jsonl]|. Long-term memory is never silently destroyed---only offloaded---which fixes the ``can offload but can't evict'' failure mode exposed in ContextBench-style baselines.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering\small
 \begin{tabular}{clll}
 \hline
@@ -92,13 +123,7 @@ After every turn the harness rewrites \texttt{context.md} (human-readable, paper
 \subsection{Serving topology}
 \texttt{clm-mem serve} presents one llama.cpp-shaped endpoint to any OpenAI-compatible client; behind it run 2--3 background processes: the backend model server (vLLM, Ollama, llama.cpp, or bundled mocks) and a SystemOne decision server (fork or mock). Requests without a session header are pure passthrough; requests carrying \verb|X-Cllm-Mem-Session| go through the harness. If no budget is configured, \texttt{serve} discovers the live llama.cpp context window (\texttt{/props}$\to$\texttt{n\_ctx}) and sets $B$ to exactly that value so the two windows never drift apart. A single-page web studio (projects sidebar with per-workspace sandboxes, colored tier badges, eviction chips such as \verb|phase2 FIFO-evicted|, archive search-and-reinject, live tuning tab, events timeline) and an embedded MCP server at \texttt{/mcp} (\texttt{clm\_chat}, \texttt{clm\_status}, \texttt{clm\_blocks}, \texttt{clm\_recall}, \texttt{clm\_reinject}, \texttt{clm\_set\_keep\_pct}, \texttt{clm\_workspaces}) drive the identical in-process library.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_arch.pdf}
-\caption{Data flow of one harness step: intake (pre-classify, evict-before-generate), core loop (live window $\to$ decode $\to$ inline tag split $\to$ return), relabel and eviction engine with backstop, and the archive. Dashed edge: reinject path from archive back into the live window.}\label{fig:arch}
-\end{figure}
-
-\begin{table}[h]
+\begin{table}[htbp]
 \centering\small
 \begin{tabular}{lll}
 \hline
@@ -116,7 +141,7 @@ $\tau=\texttt{systemone\_evict\_threshold}$ & 0.7 & noul confidence needed to ev
 \end{table}
 
 \section{Implementation}
-The package (v0.3.0, Python $\geq$3.10) ships as \texttt{clm-mem} with an optional \texttt{tokens} extra for exact token counting via the served model's HuggingFace tokenizer; otherwise a $\sim$3 chars/token heuristic deliberately over-counts (Qwen BPE runs $\approx$3.3--3.5 chars/token) so the live window cannot exceed the real server limit. Backends are anything with \texttt{chat(messages)$\to$str}: \texttt{OpenAIChat} wraps any OpenAI-compatible endpoint; \texttt{StubChat} is a deterministic fake used for offline demos and the test suite, emitting inline memory tags and answering router prompts with keyword heuristics. Modules: \texttt{blocks}, \texttt{config}, \texttt{tagging}, \texttt{tokens}, \texttt{harness} (463 lines), \texttt{server} (905), \texttt{cli}, \texttt{llm}, \texttt{mcp}, \texttt{processes}, \texttt{remote}, \texttt{mock\_backends}. The lifecycle of one \texttt{step()} is: append user message $\to$ evict \emph{before} generating (make room first) $\to$ decode on the current live context $\to$ split on inline tags, optionally relabel via router/SystemOne $\to$ evict again $\to$ mirror files. A pytest suite (\texttt{tests/}) covers harness and serve/proxy paths without GPU; \texttt{clm-mem demo} exercises inline tagging, the router pass and all three phases offline:
+The package (v0.3.0, Python $\geq$3.10) ships as \texttt{clm-mem} with an optional \texttt{tokens} extra for exact token counting via the served model's HuggingFace tokenizer; otherwise a $\sim$3 chars/token heuristic deliberately over-counts (Qwen BPE runs $\approx$3.3--3.5 chars/token) so the live window cannot exceed the real server limit (Table~\ref{tab:knobs}). Backends are anything with \texttt{chat(messages)$\to$str}: \texttt{OpenAIChat} wraps any OpenAI-compatible endpoint; \texttt{StubChat} is a deterministic fake used for offline demos and the test suite, emitting inline memory tags and answering router prompts with keyword heuristics. Modules: \texttt{blocks}, \texttt{config}, \texttt{tagging}, \texttt{tokens}, \texttt{harness} (463 lines), \texttt{server} (905), \texttt{cli}, \texttt{llm}, \texttt{mcp}, \texttt{processes}, \texttt{remote}, \texttt{mock\_backends}. The lifecycle of one \texttt{step()} is: append user message $\to$ evict \emph{before} generating (make room first) $\to$ decode on the current live context $\to$ split on inline tags, optionally relabel via router/SystemOne $\to$ evict again $\to$ mirror files. A pytest suite (\texttt{tests/}) covers harness and serve/proxy paths without GPU; \texttt{clm-mem demo} exercises inline tagging, the router pass and all three phases offline:
 \begin{quote}\small\ttfamily
 [evict] phase1: deleted 4 transient block(s)\par
 [evict] phase2: FIFO-evicted 3 of 5 shortterm (kept newest 50\%)\par
@@ -133,6 +158,23 @@ To evaluate memory quality we need labels for two decisions: the tag assigned to
 \end{itemize}
 
 \section{Synthetic evaluation (first results)}\label{sec:synthetic}
+
+% Declare the four data figures and the results table immediately after the
+% section heading: they are referenced by the findings that follow, and
+% declaring them early lets them share pages with text instead of forming
+% stretched float-only pages two pages late.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_tokens.pdf}
+\caption{Live-window token usage across $\kappa$ (heavy and balanced regimes). The dashed line is the budget $B=900$; the sawtooth is evict-after-growth, the flat top in heavy is phase-3 offload pressure.}\label{fig:tokens}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_tiers.pdf}
+\caption{Live tier composition over time ($\kappa=0.5$). Heavy: long-term saturates; balanced: transient/short absorbed while long plateaus.}\label{fig:tiers}
+\end{figure}
+
 We ran the \emph{real} harness object (\texttt{MemoryHarness}) on deterministic stub backends---this validates the engine, not model judgment; real-model runs are scheduled with the benchmarks below. Two regimes at $B=900$, 60 turns, $\kappa\in\{0.25,0.5,0.75\}$: \emph{heavy} (a durable fact every 2 turns plus long filler, so long-term alone eventually overflows and phase~3 must fire) and \emph{balanced} (fact every 4 turns with moderate filler, so phases 1--2 absorb the pressure).
 
 \paragraph{Findings}
@@ -143,7 +185,13 @@ We ran the \emph{real} harness object (\texttt{MemoryHarness}) on deterministic 
 \item \textbf{Tier composition.} Figure~\ref{fig:tiers}: in heavy the long tier saturates the window; in balanced transient and short tiers are absorbed while long grows then plateaus.
 \end{itemize}
 
-\begin{table}[h]
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_phases.pdf}
+\caption{Cumulative eviction-phase firings (heavy) and archive growth across $\kappa$.}\label{fig:phases}
+\end{figure}
+
+\begin{table}[t]
 \centering\small
 \begin{tabular}{lcccccc}
 \hline
@@ -160,25 +208,7 @@ balanced $\kappa{=}0.75$ & 37 & 78 & 37 & 182 & 5/15 & 10\\
 \caption{Synthetic stress runs (deterministic stub backend, $B=900$, 60 turns). P1/P2/P3 are cumulative phase firings; \emph{arch@60} counts archived records at the end. live + archived $=$ emitted in every run.}\label{tab:syn}
 \end{table}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_tokens.pdf}
-\caption{Live-window token usage across $\kappa$ (heavy and balanced regimes). The dashed line is the budget $B=900$; the sawtooth is evict-after-growth, the flat top in heavy is phase-3 offload pressure.}\label{fig:tokens}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_tiers.pdf}
-\caption{Live tier composition over time ($\kappa=0.5$). Heavy: long-term saturates; balanced: transient/short absorbed while long plateaus.}\label{fig:tiers}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_phases.pdf}
-\caption{Cumulative eviction-phase firings (heavy) and archive growth across $\kappa$.}\label{fig:phases}
-\end{figure}
-
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.49\textwidth]{figures/fig_retention.pdf}
 \caption{Live fact retention fraction over 60 turns ($\kappa=0.5$): heavy drops to zero once long-term saturates (facts survive only via archive); balanced keeps a stable live core.}\label{fig:retention}
@@ -212,7 +242,20 @@ The current quantitative results are engine-level: a deterministic stub stands i
 (1) Run C1--C4 with Qwen-family backends at 8B/35B scale behind \texttt{serve}; (2) learn $\kappa$ online from archive-recovery statistics; (3) bolt CLM-style editing onto the mirror as an optional tool path and measure the delta; (4) evaluate SystemOne decision quality against human marks; (5) explore compatibility with Suffix Cache Reuse-style serving so phase-3 offloads become cache-friendly deletions.
 
 \section*{Reproducibility}
-Figures are generated by \texttt{clm\_exp.py} (drives the real harness on stub backends, writes \texttt{exp-data/results.json}) and \texttt{make\_figs.py}/\texttt{make\_arch.py}. The paper compiles with a locally built LaTeX format; see \texttt{paper/build.sh}.
+All code, data and build inputs are included in this repository. Running
+\texttt{bash run\_all.sh} at the root executes the whole pipeline end to end:
+\texttt{clm\_exp.py} drives the real harness object on stub backends over the
+six regime$\times\kappa$ configurations and writes \texttt{exp-data/results.json}
+plus per-run mirrors (\texttt{context.md}, \texttt{context.jsonl},
+\texttt{archive.jsonl}); \texttt{make\_figs.py} renders the four data figures
+from that file and \texttt{make\_arch.py} the architecture schematic; and
+\texttt{paper/build.sh} compiles this document with a locally built pdflatex
+format. The stub backend is deterministic, so re-runs reproduce the committed
+\texttt{results.json} byte-for-byte (verified on Python~3.13). Engine
+invariants are additionally covered by the pytest suite in
+\texttt{clm-mem/tests} (harness lifecycle and serve/proxy paths, no GPU
+required); \texttt{clm-mem demo} exercises tagging and all three eviction
+phases offline.
 
 \begin{thebibliography}{9}
 \bibitem{clm} R.~Shao, S.~Zejiang~Shen, J.~O.~Yin, Y.~Li, M.~Wang, H.~Ivison, R.~Poovendran, N.~Lambert, T.~Xiao, M.~Lewis, W.-t.~Yih, L.~Zettlemoyer, and P.~W.~Koh. \newblock Context language models. \newblock arXiv:2609.37725, 2026.

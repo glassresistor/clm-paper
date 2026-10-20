@@ -1,4 +1,11 @@
-"""Generate paper figures from exp-data/results.json."""
+"""Generate the data figures of the arXiv paper from exp-data/results.json.
+
+Writes fig_tokens, fig_tiers, fig_phases and fig_retention as PDFs into
+paper/figures/. The architecture schematic (fig_arch.pdf) is produced by
+make_arch.py; do not generate it here or it will be overwritten.
+Runs after clm_exp.py:
+    python3 clm_exp.py && python3 make_figs.py
+"""
 import json, os
 import matplotlib
 matplotlib.use("Agg")
@@ -74,35 +81,6 @@ for scen in ("heavy", "balanced"):
 ax.set_xlabel("turn"); ax.set_ylabel(r"live facts / emitted")
 ax.set_ylim(-0.05, 1.05); ax.legend(frameon=False, fontsize=8)
 fig.tight_layout(); fig.savefig("paper/figures/fig_retention.pdf"); plt.close(fig)
-
-# ---------- Figure 5: architecture schematic ----------
-fig, ax = plt.subplots(figsize=(6.9, 3.4)); ax.axis("off")
-def box(x, y, w, h, text, fc="#f4f4f8", ec="#444", fs=9, bold=False):
-    ax.add_patch(plt.Rectangle((x, y), w, h, fc=fc, ec=ec, lw=1.0))
-    ax.text(x + w/2, y + h/2, text, ha="center", va="center", fontsize=fs,
-            fontweight="bold" if bold else "normal")
-def arrow(x1, y1, x2, y2, label=None):
-    ax.annotate("", xy=(x2, y2), xytext=(x1, y1),
-                arrowprops=dict(arrowstyle="->", lw=1.0))
-    if label:
-        ax.text((x1+x2)/2, (y1+y2)/2 + 0.04, label, fontsize=7, ha="center")
-
-box(0.02, 0.82, 0.16, 0.12, "user turn", bold=True)
-box(0.24, 0.82, 0.30, 0.12, "pre-classify\n(SystemOne choice)", fc="#e8f4e8")
-box(0.60, 0.82, 0.24, 0.12, "evict BEFORE generate", fc="#fdeee2")
-box(0.02, 0.58, 0.34, 0.14, "live window\nBlocks: long / short / transient\ncontext.md + context.jsonl mirror", fc="#e7f0fa", bold=True)
-box(0.44, 0.58, 0.24, 0.14, "LLM decode\n(any OpenAI-compat\nbackend)", fc="#fff4d6")
-box(0.74, 0.58, 0.24, 0.14, "inline tag split\n<longterm>/<shortterm>", fc="#efe3fa")
-box(0.44, 0.30, 0.24, 0.12, "post-turn router\nor SystemOne re-label", fc="#efe3fa")
-box(0.74, 0.30, 0.24, 0.12, "evict AFTER growth\nP1 transient → P2 shortterm FIFO → P3 offload", fc="#fdeee2")
-box(0.60, 0.05, 0.40, 0.12, "archive.jsonl\n(recall / reinject)", fc="#f8e0e6", bold=True)
-arrow(0.10, 0.94, 0.39, 0.94); arrow(0.54, 0.94, 0.72, 0.94)
-arrow(0.72, 0.88, 0.60, 0.72); arrow(0.36, 0.65, 0.44, 0.65)
-arrow(0.68, 0.65, 0.74, 0.65); arrow(0.86, 0.58, 0.86, 0.42)
-arrow(0.56, 0.58, 0.56, 0.42); arrow(0.56, 0.30, 0.60, 0.17)
-arrow(0.86, 0.30, 0.80, 0.17)
-ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-fig.tight_layout(); fig.savefig("paper/figures/fig_arch.pdf"); plt.close(fig)
 
 # ---------- summary numbers for paper tables ----------
 print("|scenario|kp|P1|P2|P3|archive@end|facts live@end|archived facts|")
