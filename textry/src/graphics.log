@@ -1,0 +1,66 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=docsl 2026.10.19)  19 OCT 2026 17:06
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**graphics.ins
+(./graphics.ins
+
+Generating file(s) graphics.sty 
+\openout0 = `graphics.sty'.
+
+
+Processing file graphics.dtx (package) -> graphics.sty
+Lines  processed: 2182
+Comments removed: 1567
+Comments  passed: 12
+Codelines passed: 589
+
+
+Generating file(s) color.sty 
+\openout0 = `color.sty'.
+
+
+Processing file color.dtx (package) -> color.sty
+Lines  processed: 1004
+Comments removed: 805
+Comments  passed: 12
+Codelines passed: 178
+
+
+Generating file(s) graphicx.sty 
+\openout0 = `graphicx.sty'.
+
+
+Processing file graphicx.dtx (package) -> graphicx.sty
+Lines  processed: 917
+Comments removed: 665
+Comments  passed: 10
+Codelines passed: 233
+
+
+Generating file(s) trig.sty 
+! Cannot find file trig.dtx.
+\readsource ...ot find file \uptospace #1 \qStop }
+                                                  \else \processedLines \z@ ...
+
+\processinputfiles ...putfiles \empty \inputfiles 
+                                                  \let \inputfiles \newinput...
+
+\generate ...eName \endcsname }\processinputfiles 
+                                                  \endgroup 
+l.33 ...\file{trig.sty}{\from{trig.dtx}{package}}}
+                                                  
+? 
+! Emergency stop.
+\readsource ...ot find file \uptospace #1 \qStop }
+                                                  \else \processedLines \z@ ...
+
+\processinputfiles ...putfiles \empty \inputfiles 
+                                                  \let \inputfiles \newinput...
+
+\generate ...eName \endcsname }\processinputfiles 
+                                                  \endgroup 
+l.33 ...\file{trig.sty}{\from{trig.dtx}{package}}}
+                                                  
+End of file on the terminal!
+
+No pages of output.

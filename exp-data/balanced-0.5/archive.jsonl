@@ -1,0 +1,182 @@
+{"id": 3, "turn": 1, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 6, "turn": 2, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 9, "turn": 3, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 12, "turn": 4, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 15, "turn": 5, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 18, "turn": 6, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 21, "turn": 7, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 24, "turn": 8, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 27, "turn": 9, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 30, "turn": 10, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 1, "turn": 1, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 4, "turn": 2, "role": "user", "tag": "shortterm", "content": "Quick temp note 2: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 7, "turn": 3, "role": "user", "tag": "shortterm", "content": "Quick temp note 3: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 10, "turn": 4, "role": "user", "tag": "shortterm", "content": "Quick temp note 4: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 13, "turn": 5, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-5, port 85. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 16, "turn": 6, "role": "user", "tag": "shortterm", "content": "Quick temp note 6: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 33, "turn": 11, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 36, "turn": 12, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 39, "turn": 13, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 19, "turn": 7, "role": "user", "tag": "shortterm", "content": "Quick temp note 7: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 22, "turn": 8, "role": "user", "tag": "shortterm", "content": "Quick temp note 8: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 25, "turn": 9, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-9, port 89. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 28, "turn": 10, "role": "user", "tag": "shortterm", "content": "Quick temp note 10: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 31, "turn": 11, "role": "user", "tag": "shortterm", "content": "Quick temp note 11: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 42, "turn": 14, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 45, "turn": 15, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 48, "turn": 16, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 34, "turn": 12, "role": "user", "tag": "shortterm", "content": "Quick temp note 12: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 37, "turn": 13, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 40, "turn": 14, "role": "user", "tag": "shortterm", "content": "Quick temp note 14: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 43, "turn": 15, "role": "user", "tag": "shortterm", "content": "Quick temp note 15: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 51, "turn": 17, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 54, "turn": 18, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 57, "turn": 19, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 46, "turn": 16, "role": "user", "tag": "shortterm", "content": "Quick temp note 16: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 49, "turn": 17, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-17, port 97. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 52, "turn": 18, "role": "user", "tag": "shortterm", "content": "Quick temp note 18: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 60, "turn": 20, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 55, "turn": 19, "role": "user", "tag": "shortterm", "content": "Quick temp note 19: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 58, "turn": 20, "role": "user", "tag": "shortterm", "content": "Quick temp note 20: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 65, "turn": 22, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 62, "turn": 21, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 63, "turn": 22, "role": "user", "tag": "shortterm", "content": "Quick temp note 22: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 68, "turn": 23, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 66, "turn": 23, "role": "user", "tag": "shortterm", "content": "Quick temp note 23: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 69, "turn": 24, "role": "user", "tag": "shortterm", "content": "Quick temp note 24: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 71, "turn": 24, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 73, "turn": 25, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 74, "turn": 26, "role": "user", "tag": "shortterm", "content": "Quick temp note 26: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 77, "turn": 27, "role": "user", "tag": "shortterm", "content": "Quick temp note 27: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 76, "turn": 26, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 2, "turn": 1, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_29; table name is users_v29."}
+{"id": 5, "turn": 2, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_4; table name is users_v4."}
+{"id": 8, "turn": 3, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_4; table name is users_v4."}
+{"id": 2, "turn": 1, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #2 -> archive.jsonl]"}
+{"id": 5, "turn": 2, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #5 -> archive.jsonl]"}
+{"id": 79, "turn": 27, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 8, "turn": 3, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #8 -> archive.jsonl]"}
+{"id": 80, "turn": 28, "role": "user", "tag": "shortterm", "content": "Quick temp note 28: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 84, "turn": 29, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 82, "turn": 28, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 11, "turn": 4, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_4; table name is users_v4."}
+{"id": 14, "turn": 5, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_29; table name is users_v29."}
+{"id": 17, "turn": 6, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_4; table name is users_v4."}
+{"id": 20, "turn": 7, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_4; table name is users_v4."}
+{"id": 23, "turn": 8, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_4; table name is users_v4."}
+{"id": 11, "turn": 4, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #11 -> archive.jsonl]"}
+{"id": 14, "turn": 5, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #14 -> archive.jsonl]"}
+{"id": 17, "turn": 6, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #17 -> archive.jsonl]"}
+{"id": 20, "turn": 7, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #20 -> archive.jsonl]"}
+{"id": 23, "turn": 8, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #23 -> archive.jsonl]"}
+{"id": 85, "turn": 30, "role": "user", "tag": "shortterm", "content": "Quick temp note 30: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 87, "turn": 30, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 88, "turn": 31, "role": "user", "tag": "shortterm", "content": "Quick temp note 31: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 90, "turn": 31, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 91, "turn": 32, "role": "user", "tag": "shortterm", "content": "Quick temp note 32: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 95, "turn": 33, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 93, "turn": 32, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 26, "turn": 9, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_29; table name is users_v29."}
+{"id": 29, "turn": 10, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 32, "turn": 11, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 35, "turn": 12, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 38, "turn": 13, "role": "assistant", "tag": "longterm", "content": "User's project codename is 30-Aurora; deploy port is 8030."}
+{"id": 41, "turn": 14, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 26, "turn": 9, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #26 -> archive.jsonl]"}
+{"id": 29, "turn": 10, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #29 -> archive.jsonl]"}
+{"id": 32, "turn": 11, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #32 -> archive.jsonl]"}
+{"id": 35, "turn": 12, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #35 -> archive.jsonl]"}
+{"id": 38, "turn": 13, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #38 -> archive.jsonl]"}
+{"id": 41, "turn": 14, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #41 -> archive.jsonl]"}
+{"id": 98, "turn": 34, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 96, "turn": 34, "role": "user", "tag": "shortterm", "content": "Quick temp note 34: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 99, "turn": 35, "role": "user", "tag": "shortterm", "content": "Quick temp note 35: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 101, "turn": 35, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 102, "turn": 36, "role": "user", "tag": "shortterm", "content": "Quick temp note 36: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 104, "turn": 36, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 106, "turn": 37, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 44, "turn": 15, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 44, "turn": 15, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #44 -> archive.jsonl]"}
+{"id": 107, "turn": 38, "role": "user", "tag": "shortterm", "content": "Quick temp note 38: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 47, "turn": 16, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 50, "turn": 17, "role": "assistant", "tag": "longterm", "content": "User's project codename is 30-Aurora; deploy port is 8030."}
+{"id": 47, "turn": 16, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #47 -> archive.jsonl]"}
+{"id": 50, "turn": 17, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #50 -> archive.jsonl]"}
+{"id": 109, "turn": 38, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 110, "turn": 39, "role": "user", "tag": "shortterm", "content": "Quick temp note 39: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 113, "turn": 40, "role": "user", "tag": "shortterm", "content": "Quick temp note 40: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 112, "turn": 39, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 53, "turn": 18, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 56, "turn": 19, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 59, "turn": 20, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 61, "turn": 21, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-21, port 101. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 53, "turn": 18, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #53 -> archive.jsonl]"}
+{"id": 56, "turn": 19, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #56 -> archive.jsonl]"}
+{"id": 59, "turn": 20, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #59 -> archive.jsonl]"}
+{"id": 115, "turn": 40, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 61, "turn": 21, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #61 -> archive.jsonl]"}
+{"id": 117, "turn": 41, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 118, "turn": 42, "role": "user", "tag": "shortterm", "content": "Quick temp note 42: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 120, "turn": 42, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 121, "turn": 43, "role": "user", "tag": "shortterm", "content": "Quick temp note 43: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 124, "turn": 44, "role": "user", "tag": "shortterm", "content": "Quick temp note 44: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 123, "turn": 43, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 64, "turn": 22, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 67, "turn": 23, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 70, "turn": 24, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 72, "turn": 25, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-25, port 105. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 64, "turn": 22, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #64 -> archive.jsonl]"}
+{"id": 67, "turn": 23, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #67 -> archive.jsonl]"}
+{"id": 70, "turn": 24, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #70 -> archive.jsonl]"}
+{"id": 126, "turn": 44, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 72, "turn": 25, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #72 -> archive.jsonl]"}
+{"id": 128, "turn": 45, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 129, "turn": 46, "role": "user", "tag": "shortterm", "content": "Quick temp note 46: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 131, "turn": 46, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 132, "turn": 47, "role": "user", "tag": "shortterm", "content": "Quick temp note 47: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 135, "turn": 48, "role": "user", "tag": "shortterm", "content": "Quick temp note 48: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 134, "turn": 47, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 75, "turn": 26, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 78, "turn": 27, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 81, "turn": 28, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 83, "turn": 29, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-29, port 109. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 75, "turn": 26, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #75 -> archive.jsonl]"}
+{"id": 78, "turn": 27, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #78 -> archive.jsonl]"}
+{"id": 81, "turn": 28, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #81 -> archive.jsonl]"}
+{"id": 137, "turn": 48, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 83, "turn": 29, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #83 -> archive.jsonl]"}
+{"id": 139, "turn": 49, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 140, "turn": 50, "role": "user", "tag": "shortterm", "content": "Quick temp note 50: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 142, "turn": 50, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 143, "turn": 51, "role": "user", "tag": "shortterm", "content": "Quick temp note 51: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 146, "turn": 52, "role": "user", "tag": "shortterm", "content": "Quick temp note 52: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 145, "turn": 51, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 86, "turn": 30, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 89, "turn": 31, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 92, "turn": 32, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 94, "turn": 33, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-33, port 113. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 86, "turn": 30, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #86 -> archive.jsonl]"}
+{"id": 89, "turn": 31, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #89 -> archive.jsonl]"}
+{"id": 92, "turn": 32, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #92 -> archive.jsonl]"}
+{"id": 148, "turn": 52, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 94, "turn": 33, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #94 -> archive.jsonl]"}
+{"id": 150, "turn": 53, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 151, "turn": 54, "role": "user", "tag": "shortterm", "content": "Quick temp note 54: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 153, "turn": 54, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 154, "turn": 55, "role": "user", "tag": "shortterm", "content": "Quick temp note 55: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 157, "turn": 56, "role": "user", "tag": "shortterm", "content": "Quick temp note 56: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 156, "turn": 55, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 97, "turn": 34, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 100, "turn": 35, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 103, "turn": 36, "role": "assistant", "tag": "longterm", "content": "User's project codename is 5-Aurora; deploy port is 805."}
+{"id": 105, "turn": 37, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-37, port 117. Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 97, "turn": 34, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #97 -> archive.jsonl]"}
+{"id": 100, "turn": 35, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #100 -> archive.jsonl]"}
+{"id": 103, "turn": 36, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #103 -> archive.jsonl]"}
+{"id": 159, "turn": 56, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 105, "turn": 37, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #105 -> archive.jsonl]"}
+{"id": 161, "turn": 57, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 31)."}
+{"id": 162, "turn": 58, "role": "user", "tag": "shortterm", "content": "Quick temp note 58: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 164, "turn": 58, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 165, "turn": 59, "role": "user", "tag": "shortterm", "content": "Quick temp note 59: Here is a longish status update with plenty of incidental detail that eats tokens."}
+{"id": 168, "turn": 60, "role": "user", "tag": "shortterm", "content": "Quick temp note 60: Here is a longish status update with plenty of incidental detail that eats tokens."}

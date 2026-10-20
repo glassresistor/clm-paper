@@ -1,0 +1,19 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=docsl 2026.10.19)  19 OCT 2026 17:00
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ifthen.ins
+(./ifthen.ins
+
+Generating file(s) ifthen.sty 
+\openout0 = `ifthen.sty'.
+
+
+Processing file ifthen.dtx (package) -> ifthen.sty
+File ifthen.dtx ended by \endinput.
+Lines  processed: 557
+Comments removed: 421
+Comments  passed: 6
+Codelines passed: 121
+
+ )
+No pages of output.

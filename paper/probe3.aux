@@ -1,0 +1,61 @@
+\relax 
+\citation{memgpt}
+\citation{memorybank}
+\citation{amem}
+\citation{mem0}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contributions}{2}{}\protected@file@percent }
+\citation{ruler}
+\citation{longmemeval}
+\citation{locomo}
+\citation{lostmiddle}
+\citation{paged}
+\citation{h2o}
+\citation{snapkv}
+\citation{streamingllm}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background and related work}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tiered memory systems.}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Long-context evaluation.}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Serving-side cache management.}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}System design}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Blocks and memory tiers}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Self-classification without retraining}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Three-phase eviction engine}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Eviction phases. Pinned blocks (system prompt) are never evicted; the trailing coherence window $k=\texttt  {keep\_recent\_turns}$ defaults to 2.}}{4}{}\protected@file@percent }
+\newlabel{tab:phases}{{1}{4}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Archive, recall and reinject}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Context-as-a-file mirror}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Serving topology}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Data flow of one harness step: intake (pre-classify, evict-before-generate), core loop (live window $\to $ decode $\to $ inline tag split $\to $ return), relabel and eviction engine with backstop, and the archive. Dashed edge: reinject path from archive back into the live window.}}{5}{}\protected@file@percent }
+\newlabel{fig:arch}{{1}{5}{}{figure.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Harness configuration knobs (\texttt  {HarnessConfig}).}}{5}{}\protected@file@percent }
+\newlabel{tab:knobs}{{2}{5}{}{table.2}{}}
+\citation{clm}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Marking protocol}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Synthetic evaluation (first results)}{6}{}\protected@file@percent }
+\newlabel{sec:synthetic}{{6}{6}{}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Findings}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Benchmarking plan}{6}{}\protected@file@percent }
+\citation{locomo}
+\citation{longmemeval}
+\citation{ruler}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Synthetic stress runs (deterministic stub backend, $B=900$, 60 turns). P1/P2/P3 are cumulative phase firings; \emph  {arch@60} counts archived records at the end. live + archived $=$ emitted in every run.}}{7}{}\protected@file@percent }
+\newlabel{tab:syn}{{3}{7}{}{table.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Live-window token usage across $\kappa $ (heavy and balanced regimes). The dashed line is the budget $B=900$; the sawtooth is evict-after-growth, the flat top in heavy is phase-3 offload pressure.}}{7}{}\protected@file@percent }
+\newlabel{fig:tokens}{{2}{7}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{C1. Synthetic generator (open-source release).}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C2. LoCoMo (very long-term conversations).}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C3. LongMemEval.}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{C4. RULER-style long-context probes.}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Live tier composition over time ($\kappa =0.5$). Heavy: long-term saturates; balanced: transient/short absorbed while long plateaus.}}{8}{}\protected@file@percent }
+\newlabel{fig:tiers}{{3}{8}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Metrics summary and protocol.}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Testing plan}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Discussion and limitations}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cumulative eviction-phase firings (heavy) and archive growth across $\kappa $.}}{9}{}\protected@file@percent }
+\newlabel{fig:phases}{{4}{9}{}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Live fact retention fraction over 60 turns ($\kappa =0.5$): heavy drops to zero once long-term saturates (facts survive only via archive); balanced keeps a stable live core.}}{9}{}\protected@file@percent }
+\newlabel{fig:retention}{{5}{9}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Future work}{9}{}\protected@file@percent }
+\gdef \@abspage@last{9}

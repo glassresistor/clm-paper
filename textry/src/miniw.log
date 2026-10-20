@@ -1,0 +1,21 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (INITEX)  19 OCT 2026 17:57
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**mini.tex
+(./mini.tex)
+Runaway definition?
+{2026-09-09}\begingroup \def \next {\endgroup }\expandafter \ifx \csname \ETC.
+! File ended while scanning definition of \ExplFileDate.
+<inserted text> 
+                }
+<*> mini.tex
+            
+? 
+! Emergency stop.
+<inserted text> 
+                }
+<*> mini.tex
+            
+End of file on the terminal!
+
+No pages of output.

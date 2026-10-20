@@ -1,0 +1,19 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=docsl 2026.10.19)  19 OCT 2026 17:01
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**amstext.ins
+(./amstext.ins
+
+Generating file(s) amstext.sty 
+\openout0 = `amstext.sty'.
+
+
+Processing file amstext.dtx -> amstext.sty
+File amstext.dtx ended by \endinput.
+Lines  processed: 297
+Comments removed: 230
+Comments  passed: 0
+Codelines passed: 65
+
+ )
+No pages of output.

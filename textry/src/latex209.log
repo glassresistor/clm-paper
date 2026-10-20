@@ -1,0 +1,85 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=docsl 2026.10.19)  19 OCT 2026 17:00
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**latex209.ins
+(./latex209.ins
+*** Generating compatibility mode files ***
+
+Generating file(s) latex209.def article.sty book.sty report.sty letter.sty slid
+es.sty fleqn.sty leqno.sty openbib.sty bezier.sty t1enc.sty 
+\openout0 = `latex209.def'.
+
+\openout1 = `article.sty'.
+
+\openout2 = `book.sty'.
+
+\openout3 = `report.sty'.
+
+\openout4 = `letter.sty'.
+
+\openout5 = `slides.sty'.
+
+\openout6 = `fleqn.sty'.
+
+\openout7 = `leqno.sty'.
+
+\openout8 = `openbib.sty'.
+
+\openout9 = `bezier.sty'.
+
+\openout10 = `t1enc.sty'.
+
+
+Processing file latex209.dtx (head) -> latex209.def
+                             (article) -> article.sty
+                             (book) -> book.sty
+                             (report) -> report.sty
+                             (letter) -> letter.sty
+                             (slides) -> slides.sty
+                             (fleqn) -> fleqn.sty
+                             (leqno) -> leqno.sty
+                             (openbib) -> openbib.sty
+                             (bezier) -> bezier.sty
+                             (t1enc) -> t1enc.sty
+File latex209.dtx ended by \endinput.
+Lines  processed: 1151
+Comments removed: 799
+Comments  passed: 0
+Codelines passed: 324
+
+
+Processing file oldlfont.dtx (latex209) -> latex209.def
+File oldlfont.dtx ended by \endinput.
+Lines  processed: 251
+Comments removed: 192
+Comments  passed: 3
+Codelines passed: 45
+
+
+Processing file latex209.dtx (tail) -> latex209.def
+File latex209.dtx  ended by \endinput.
+Lines  processed: 1151
+Comments removed: 799
+Comments  passed: 0
+Codelines passed: 324
+
+***********************************************************
+*
+* To finish the installation you have to move the following
+* files into a directory searched by TeX:
+*
+*   latex209.def *.sty 
+*
+* To produce the documentation run the files ending with
+* `.drv' through LaTeX.
+*
+* Happy TeXing
+***********************************************************
+Overall statistics:
+Files  processed: 3
+Lines  processed: 2553
+Comments removed: 1790
+Comments  passed: 3
+Codelines passed: 693
+ )
+No pages of output.

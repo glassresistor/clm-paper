@@ -1,0 +1,29 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=docsl 2026.10.19)  19 OCT 2026 18:50
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**tr.ins
+(./tr.ins
+
+Generating file(s) trig.sty 
+\openout0 = `trig.sty'.
+
+
+Processing file trig.dtx (package) -> trig.sty
+% % <*dtx . > <*!plain <package&!plain . > <package&!plain . > <driver . > % %
+. % % > <*driver . . . . . > % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % <*package % % % % % %
+% % % % . . . . % % % % % % % % % % % % % % % % % % % % % % % % . % . . . % %
+% % % % % % % . . % % % % % % % . . . % % % % % % % . . . % % % % % . % % % .
+. % % % . . . . . % % % % . . % % % % % % % . . . . . . % % % % % % . . . . .
+. . . % % % % % % % % . . . . . % % % % % % . . . . % % % % % % % . . % % % %
+% % % . . . % % % . . . . . . . . % % % % . . . . . . . . . . % % % % % % % %
+% . . . . . . . . . . . . % % % % % % . % % % % % % % . . % % % % % % . . . %
+% % > % % % %
+File trig.dtx ended by \endinput.
+Lines  processed: 333
+Comments removed: 215
+Comments  passed: 10
+Codelines passed: 97
+
+ )
+No pages of output.

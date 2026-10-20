@@ -1,0 +1,46 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=docsl 2026.10.19)  19 OCT 2026 17:00
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**tulm.ins
+(./tulm.ins
+
+Generating file(s) tulmss.fd tulmssq.fd tulmr.fd tulmtt.fd tulmvtt.fd tulmdh.fd
+ 
+\openout0 = `tulmss.fd'.
+
+\openout1 = `tulmssq.fd'.
+
+\openout2 = `tulmr.fd'.
+
+\openout3 = `tulmtt.fd'.
+
+\openout4 = `tulmvtt.fd'.
+
+\openout5 = `tulmdh.fd'.
+
+
+Processing file tulm.fdd (TUlmss) -> tulmss.fd
+                         (TUlmssq) -> tulmssq.fd
+                         (TUlmr) -> tulmr.fd
+                         (TUlmtt) -> tulmtt.fd
+                         (TUlmvtt) -> tulmvtt.fd
+                         (TUlmdh) -> tulmdh.fd
+Lines  processed: 331
+Comments removed: 67
+Comments  passed: 0
+Codelines passed: 242
+
+***********************************************************
+*
+* To finish the installation you have to move the following
+* files into a directory searched by TeX:
+*
+*   All *.fd
+*
+* To produce the documentation run the files ending with
+* `.fdd' through LaTeX.
+*
+* Happy TeXing
+***********************************************************
+ )
+No pages of output.

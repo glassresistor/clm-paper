@@ -1,0 +1,22 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (INITEX)  19 OCT 2026 17:41
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**w.tex
+(./w.tex (/usr/share/texmf-dist/tex/generic/tex-ini-files/pdftexconfig.tex)
+(./expl3-code.tex)
+Runaway definition?
+{2026-09-09}\begingroup \def \next {\endgroup }\expandafter \ifx \csname \ETC.
+! File ended while scanning definition of \ExplFileDate.
+<inserted text> 
+                }
+l.2 \input expl3-code.tex
+                         
+? 
+! Emergency stop.
+<inserted text> 
+                }
+l.2 \input expl3-code.tex
+                         
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

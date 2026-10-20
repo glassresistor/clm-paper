@@ -1,0 +1,1739 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2023-2026
+% The LaTeX Project and any individual authors listed elsewhere
+% in this file.
+%
+% This file is part of the LaTeX base system.
+% -------------------------------------------
+%
+% It may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%    https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This file has the LPPL maintenance status "maintained".
+%
+% The list of all files belonging to the LaTeX base distribution is
+% given in the file `manifest.txt'. See also `legal.txt' for additional
+% information.
+%
+% The list of derived (unpacked) files belonging to the distribution
+% and covered by LPPL is defined by the unpacking scripts (with
+% extension .ins) which are part of the distribution.
+%
+% \fi
+%
+% \iffalse
+%%% From File: lttagging.dtx
+%
+%<*driver>
+% \fi
+\ProvidesFile{lttagging.dtx}
+             [2026-05-16 v1.0z LaTeX Kernel (tagging support)]
+% \iffalse
+\documentclass{l3in2edoc}
+\GetFileInfo{lttagging.dtx}
+\title{\filename}
+\date{\filedate}
+\author{\LaTeX{} project}
+
+\begin{document}
+% \MaintainedByLaTeXTeam{latex}     % should be added again the moment
+                                    % it is supported by l3doc
+ \maketitle
+ \DocInput{\filename}
+\end{document}
+%</driver>
+% \fi
+%
+% \providecommand\env[1]{\texttt{#1}}
+%
+%
+%    \begin{macrocode}
+%<*2ekernel|latexrelease>
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ExplSyntaxOn
+%    \end{macrocode}
+%
+%
+% \section{General support for tagged output}
+%
+%  \DescribeMacro\SuspendTagging
+%  \DescribeMacro\ResumeTagging
+%  \DescribeMacro\tag_suspend:n
+%  \DescribeMacro\tag_resume:n
+
+%
+%  There are places in code where it is important to stop any tagging
+%  activities, e.g., when we are doing trial typesetting that it is
+%  done several times. In such a case one must tag only the final
+%  version that is actually used, otherwise tagging structures are
+%  generated which then do not end up in the PDF and confuse the
+%  mechanism. For this we have two commands that can be used in
+%  packages: \cs{SuspendTagging} and \cs{ResumeTagging} (with corresponding
+%  L3 programming layer commands). They are
+%  available as part of the \LaTeX{} kernel, so that they can be
+%  safely used in packages whether or not tagging is requested. They
+%  all take a string argument that is used for debugging to easily
+%  identify why tagging was suspended or restarted, for example, in
+%  \pkg{tabularx} you find \verb=\SuspendTagging{tabularx}=. By default
+%  these four commands do nothing.
+%
+%  The argument is used literally (in \cs{typeout} messages) without any
+%  expansion when  debugging is turned on and otherwise it is not used at all.
+%  This means it is safe to write something like
+%  \verb=\SuspendTagging{\foo}= or even \verb=\SuspendTagging\foo=
+%  which means \LaTeX{} has to parse only
+%  a single token instead of putting a string of characters into the
+%  argument. This means a tiny speed improvement but with many such
+%  debugging strings\ldots
+%
+%
+%
+%
+% \DescribeMacro\NewTaggingSocket
+% \DescribeMacro\NewTaggingSocketPlug
+% \DescribeMacro\AssignTaggingSocketPlug
+% Tagging sockets are implemented as normal sockets but with a name
+% that starts with \texttt{tagsupport/} and some special conventions
+% how their arguments (if any) are to be interpreted. This means in
+% principle one can use the standard socket commands, which is what
+% we started out with.
+%
+% However, providing dedicated declaration commands is more convenient
+% and helps in keeping the interfaces clearer and simpler, e.g.,
+% \cs{NewTaggingSocket} not only declares the socket but also
+% automatially sets up necessary plugs and assigns a suitable default
+% plug when tagging is not enabled.
+%
+% \cs{NewTaggingSocketPlug} and \cs{AssignTaggingSocketPlug} on the
+% other hand are mainly syntactic sugar and do nothing more than
+% adding the \texttt{tagsupport/} to the socket name behind the
+% scenes.
+%
+%
+%
+%
+% \DescribeMacro\UseTaggingSocket
+% \DescribeMacro\tag_socket_use:n
+% \DescribeMacro\tag_socket_use:nn
+% \DescribeMacro\tag_socket_use:nnn
+% Given that we sometimes have to suspend tagging, it would be fairly
+% inefficient to put different plugs into these sockets whenever that
+% happens. We therefore offer \cs{UseTaggingSocket} which is like
+% \cs{UseSocket} except that is expects a socket starting with
+% \texttt{tagsupport/} but the socket name is specified without
+% this prefix, i.e.,
+% \begin{quote}
+%   \verb=\UseTaggingSocket{foo}=      $\to$
+%   \verb=\UseSocket{tagsupport/foo}=
+% \end{quote}.
+%
+% Beside being slightly shorter, the big advantage is that this way
+% we can change \cs{UseTaggingSocket} to do nothing by switching a boolean
+% instead of changing the plugs of the tagging support sockets back and forth.
+%
+% Usually, these sockets have (beside the default plug defined for every socket)
+% one additional plug defined and directly assigned. This plug is used when
+% tagging is active.
+% There may be more plugs, e.g., tagging with special debugging or special behavior
+% depending on the class or PDF version etc., but right now it is usually just on or off.
+%
+% When tagging is suspended they all have the same predefined behavior:
+% The sockets with zero arguments do nothing. The sockets with one argument
+% gobble their argument. The sockets with two arguments
+% will drop their first argument and pass the second unchanged.
+%
+% It is possible to use the tagging support sockets with
+% \cs{UseSocket} directly, but in this case the socket remains active
+% if \cs{SuspendTagging} is in force. There may be reasons for doing
+% that but in general we expect to always use \cs{UseTaggingSocket}.
+%
+% \DescribeMacro\UseExpandableTaggingSocket
+% \DescribeMacro\tag_socket_use_expandable:n
+%  For special cases like in some \cs{halign} contexts we need a fully expandable
+%  version of the command. For these cases, \cs{UseExpandableTaggingSocket} can be
+%  used. To allow being expandable, it does not output any debugging information
+%  if \cs{DebugSocketsOn} is in effect and therefore should be avoided whenever possible.
+%
+%  The L3 programming layer versions \cs{tag_socket_use_expandable:n},
+%  \cs{tag_socket_use:n}, \cs{tag_socket_use:nn}, and \cs{tag_socket_use:nnn}
+%  are slightly more efficient than
+%  \cs{UseTaggingSocket} because they do not have to determine how
+%  many arguments the socket takes when disabling it.
+%
+% \DescribeMacro\MathCollectTrue
+% \DescribeMacro\MathCollectFalse
+% The tagging of math has to collect/grab the math first. This is not wanted
+% for all uses of \verb+$+. These command allow to control the behavior of the
+% math shift token. Without the  math tagging code they do nothing. Their behavior
+% with the math tagging code is documented in latex-lab-math.pdf
+%
+%
+% \DescribeMacro\MathMLintent
+% \DescribeMacro\MathMLarg
+% \changes{v1.0r}{2025/08/23}{MathML intent macros added}
+% These two commands take two arguments. The first argument is the value of the
+% \verb|intent| or \verb|arg| attribute to be added to the MathML generated by
+% the term in the second argument.
+% By default the commands are no-op and discard the first argument and expand to
+% the second. If \pkg{luamml} is loaded via the math tagging code, then these commands
+% are redefined. They could also potentially be used by other \TeX{} to MathML convertors
+% to control the generated MathML.
+%
+%  \DescribeMacro\NewStructureName
+%  \DescribeMacro\UseStructureName
+%  \DescribeMacro\AssignStructureRole
+%  Structure elements in a document can use as tag a name from the standard PDF namespaces
+%  like \verb|Sect|, \verb|H1| or \verb|Figure| but they can also use new names
+%  (which then must be rolemapped to a standard name). The second option is useful for three reasons:
+%  \begin{itemize}
+%  \item It looks nicer, if, e.g., a bible uses tag names like \texttt{Testament} or
+%  \texttt{Chapter} or \texttt{Book} instead of \texttt{Sect}.
+%  \item It is possible to formulate additional constraint on such structures in a Schema
+%  and thus ensure that there is no \texttt{Testament} inside a \texttt{Book},
+%  something that can not be done if \texttt{Sect} is used everywhere.
+%  \item We can provide a uniform LaTeX set of names for tags.
+%  \end{itemize}
+%
+%  To make it possible to adapt the tag names of a structure in document, the tag name
+%  should be stored in a command. These three commands offer an interface to declare,
+%  use and reassign such symbolic structure names. \verb+\NewStructureName+
+%  takes one argument and
+%  declares the internal command, initially its value is \texttt{NonStruct}.
+%  The expandable command \verb+\UseStructureName+ takes one argument and allows to use
+%  the stored value. \verb+\AssignStructureRole+ takes two
+%  arguments. The first is a symbolic structure names, the second a role which
+%  should be a simply string allowed as a tag name.
+%  When the tagging code is loaded \verb+\AssignStructureRole+ is redefined
+%  to setup the rolemapping, see the description in \texttt{latex-lab-namespace.dtx}.
+%  There is also a description of
+%  the naming scheme and a list of the already predeclared names.
+%
+%
+%
+% \MaybeStop{}
+% \section{Implementation}
+%
+%
+%
+%  \begin{macro}{\tag_suspend:n,\tag_resume:n,\SuspendTagging,\ResumeTagging}
+%
+%    In the kernel, these commands get dummy definitions so that
+%    they can be used without harm in packages. The real definition is
+%    used when tagging gets enabled.
+%    \begin{macrocode}
+\cs_new_eq:NN \tag_suspend:n \use_none:n
+\cs_new_eq:NN \tag_resume:n  \use_none:n
+\cs_new_protected:Npn \SuspendTagging #1 { \tag_suspend:n {#1} }
+\cs_new_protected:Npn \ResumeTagging #1  { \tag_resume:n {#1} }
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%
+%
+%  \begin{macro}{\NewTaggingSocket}
+%    Initialize a new tagging socket and assign it a suitable plug.
+% \changes{v1.0o}{2025/02/26}{Initialize tagging sockets with 1 or 2 arguments}
+%    \begin{macrocode}
+\cs_new_protected:Npn \NewTaggingSocket #1 #2 {
+  \socket_new:nn { tagsupport / #1 } { #2 }
+  \int_case:nnF
+      { #2 }
+         {
+           0 \prg_do_nothing:
+           1 { \socket_assign_plug:nn { tagsupport /  #1 } { noop } }
+%    \end{macrocode}
+%    Tagging sockets with two arguments use a special \texttt{transparent} plug that
+%    just passes the second argument. Its already assigned so we only
+%    have to alter it.
+%    \begin{macrocode}
+           2 { \socket_new_plug:nnn { tagsupport / #1 } { transparent }
+                                    { ##2 }
+               \socket_assign_plug:nn { tagsupport /  #1 } { transparent } }
+         }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+         \ERRORnewtaggingsocket  % that should get a proper error message
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\NewTaggingSocketPlug,\AssignTaggingSocketPlug}
+%
+% \changes{v1.0o}{2025/02/26}{Macro added}
+%    \begin{macrocode}
+\cs_new_protected:Npn \NewTaggingSocketPlug #1 {
+  \NewSocketPlug { tagsupport/ #1 }
+}
+\cs_new_protected:Npn \AssignTaggingSocketPlug #1 {
+  \AssignSocketPlug { tagsupport/ #1 }
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\tag_socket_use:n,
+%                \tag_socket_use:nn,
+%                \tag_socket_use:nnn,
+%                \tag_socket_use_expandable:n,
+%                \UseTaggingSocket,
+%                \UseExpandableTaggingSocket,
+%               }
+%    Again this is not the final definition for the kernel; it is just
+%    a version to get going while some parts of the kernel support are
+%    still missing.
+% \changes{v1.0l}{2024/11/21}{Define \cs{tag_if_active:TF} conditionals here (github/1558)}
+%    \begin{macrocode}
+\prg_new_conditional:Npnn \tag_if_active: { p , T , TF, F }
+     { \prg_return_false: }
+%    \end{macrocode}
+%    Dummy definitions in the kernel.
+%    These definitions will get updated in \pkg{tagpdf}.
+%    The default in the kernel is simply to get rid of the first argument, while
+%    the second argument is preserved if present:
+% \changes{v1.0k}{2024/10/21}{Changed behavior of two argument tagging sockets when disabled.}
+% \changes{v1.0k}{2024/10/21}{Added expandable variants}
+%    \begin{macrocode}
+\cs_new:Npn \tag_socket_use_expandable:n #1 { }
+\cs_new_protected:Npn \tag_socket_use:n #1 { }
+\cs_new_protected:Npn \tag_socket_use:nn #1#2 { }
+\cs_new_protected:Npn \tag_socket_use:nnn #1#2#3 { #3 }
+\cs_new_protected:Npn \UseTaggingSocket #1 {
+  \int_case:nnF
+      { \int_use:c { c__socket_tagsupport/#1_args_int } }
+         {
+           0 \prg_do_nothing:
+           1 \use_none:n
+           2 \use_ii:nn
+%    \end{macrocode}
+%    We do not expect tagging sockets with more than one or two
+%    arguments, so for now we only provide those.
+%    \begin{macrocode}
+         }
+         \ERRORusetaggingsocket  % that should get a proper error message
+}
+%    \end{macrocode}
+%    The same as an expandable command:
+%    \begin{macrocode}
+\cs_new:Npn \UseExpandableTaggingSocket #1 {
+  \int_case:nnF
+      { \int_use:c { c__socket_tagsupport/#1_args_int } }
+         {
+           0 \prg_do_nothing:
+           1 \use_none:n
+           2 \use_ii:nn
+         }
+         \ERRORusetaggingsocket  % that should get a proper error message
+}
+%    \end{macrocode}
+%
+%  \end{macro}
+%
+% \subsection{Math collection}
+% The documentation is in latex-lab-math.
+%
+% \begin{macro}{\MathCollectTrue,\MathCollectFalse}
+%    \begin{macrocode}
+\cs_new_protected:Npn\MathCollectTrue{}
+\cs_new_protected:Npn\MathCollectFalse{}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Tagging sockets}
+% This collects tagging sockets that should be generally available
+% so that they can also be used even if the tagging code is not loaded.
+%
+% \subsection{Generic sockets}
+% These sockets are used in various places and should not be reassigned globally.
+%
+% \begin{taggingsocketdecl}{mc}
+% At first a generic socket to surround content with the mc-commands. The first
+% argument can be used to pass options like \texttt{artifact}
+%    \begin{macrocode}
+\NewTaggingSocket{mc}{2}
+\NewTaggingSocketPlug{mc}{kernel}
+  {
+    \tag_mc_begin:n {#1}
+      #2
+    \tag_mc_end:
+  }
+\AssignTaggingSocketPlug{mc}{kernel}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{struct-mc}
+% A socket to surround content with a structure and an mc-command. With the first
+% argument the tag and other options can be set.
+%    \begin{macrocode}
+\NewTaggingSocket{struct-mc}{2}
+\NewTaggingSocketPlug{struct-mc}{kernel}
+  {
+    \tag_struct_begin:n{#1}
+      \tag_mc_begin:n {}
+          #2
+      \tag_mc_end:
+    \tag_struct_end:
+  }
+\AssignTaggingSocketPlug{struct-mc}{kernel}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{struct/begin,struct/end}
+% Sockets to start and end a structure. With the first
+% argument the tag and other options can be set.
+% \changes{v1.0w}{2026/04/08}{Added generic sockets for structure}
+% \changes{v1.0x}{2026/04/22}{renamed struct-begin socket}
+%    \begin{macrocode}
+\NewTaggingSocket{struct/begin}{1}
+\NewTaggingSocket{struct/end}{0}
+\NewTaggingSocketPlug{struct/begin}{kernel}
+  {
+    \tag_struct_begin:n{#1}
+  }
+\NewTaggingSocketPlug{struct/end}{kernel}
+  {
+    \tag_struct_end:
+  }
+\AssignTaggingSocketPlug{struct/begin}{kernel}
+\AssignTaggingSocketPlug{struct/end}{kernel}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{inline/begin,inline/end}
+% These sockets can be used to insert small structures (often a Span with some
+% attributes) inside a paragraph: They close and reopen MC's.
+% With the argument structure name and attributes can be passed on.
+% \changes{v1.0x}{2026/04/22}{added inline/begin, inline/end socket}
+%    \begin{macrocode}
+\NewTaggingSocket{inline/begin}{1}
+\NewTaggingSocketPlug{inline/begin}{kernel}
+  {
+    \tag_mc_end_push:
+    \tag_struct_begin:n{#1}
+    \tag_mc_begin:n{}
+  }
+\AssignTaggingSocketPlug{inline/begin}{kernel}
+\NewTaggingSocket{inline/end}{0}
+\NewTaggingSocketPlug{inline/end}{kernel}
+  {
+    \tag_mc_end:
+    \tag_struct_end:
+    \tag_mc_begin_pop:n{}
+  }
+\AssignTaggingSocketPlug{inline/end}{kernel}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+% 
+% \subsubsection{Tagging support for paragraph setup}
+%
+% Paragraphs are tagged through the code in the para/hooks. This code is sometimes
+% adjusted, e.g. to produce a \enquote{flattened} paragraph or to use a different tag.
+% Sockets related to such code parts are collected here.
+%
+%  \begin{macro}{\l__tag_block_flattened_level_int}
+%    The block code needs to know if they are nested blockenvs inside
+%    a flattened environment. For this it uses a counter. Inside some contexts,
+%    e.g. at the begin of a minipage or a footnote this counter must be reset.
+%    We therefore define the counter here so that we can use it in the following
+%    socket.
+%    \begin{macrocode}
+\int_new:N \l__tag_block_flattened_level_int
+%    \end{macrocode}
+%  \end{macro}
+%
+%\begin{taggingsocketdecl}{para/on,para/off}
+% These sockets allow paragraph tagging to be enabled/disabled.
+%    \begin{macrocode}
+\NewTaggingSocket{para/on}{0}
+\NewTaggingSocketPlug{para/on}{kernel}{\bool_set_true:N \l__tag_para_bool}
+\NewTaggingSocket{para/off}{0}
+\NewTaggingSocketPlug{para/off}{kernel}{\bool_set_false:N \l__tag_para_bool}
+\AssignTaggingSocketPlug{para/on}{kernel}
+\AssignTaggingSocketPlug{para/off}{kernel}
+%    \end{macrocode}
+%\end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{para/restore}
+% This socket restores the para related settings to their default. It
+% should be used in places where ``normal'' paragraph tagging must be ensured, for example
+% at the begin of a footnote.
+%    \begin{macrocode}
+\NewTaggingSocket{para/restore}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingplugdecl}{default}
+% \changes{v1.0i}{2024/10/10}{Restore also paratagging (tagging/723)}
+% \changes{v1.0t}{2025/08/21}{Use symbolic name instead of text-unit}
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/restore}{default}
+ {
+   \tl_set:Nn    \l__tag_para_main_tag_tl {\UseStructureName{para/semantic}}
+   \tl_set_eq:NN \l__tag_para_tag_tl\l__tag_para_tag_default_tl
+   \bool_set_false:N\l__tag_para_flattened_bool
+   \int_zero:N   \l__tag_block_flattened_level_int
+   \bool_set_true:N \l__tag_para_bool
+ }
+\AssignTaggingSocketPlug{para/restore}{default}
+%    \end{macrocode}
+% \end{taggingplugdecl}
+%
+% \begin{taggingsocketdecl}{para/begin,para/end}
+% These sockets were previously defined in tagpdf.
+% There are the main sockets to handle the paragraph tagging when it is active
+% (i.e., when para/on or para/restore was executed earlier).
+%    \begin{macrocode}
+\NewTaggingSocket{para/begin}{0}
+\NewTaggingSocket{para/end}{0}
+%    \end{macrocode}
+% Until tagpdf is updated we need to provide the plain and block plugs
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/begin}{plain}{}
+\NewTaggingSocketPlug{para/end}{plain}{}
+\NewTaggingSocketPlug{para/begin}{block}{}
+\NewTaggingSocketPlug{para/end}{block}{}
+
+%    \end{macrocode}
+
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{para/semantic/begin,para/semantic/end}
+% These sockets handle the \UseStructureName{para/semantic} begin and end structure.
+% These are stored in sockets of their own to be able to disable
+% them globally.
+%
+%    \begin{macrocode}
+\NewTaggingSocket{para/semantic/begin}{1}
+\NewTaggingSocket{para/semantic/end}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingplugdecl}{kernel (para/semantic/begin)}
+% This tagging socket adds a \UseStructureName{para/semantic} structure.
+% The argument allows to add additional commands like
+% the command that puts the structure number of this command
+% on a stack.
+%    \begin{macrocode}
+\tl_new:N \l__tag_para_attr_class_tl
+\NewTaggingSocketPlug{para/semantic/begin}{kernel}
+ {
+    \__tag_gincr_para_main_begin_int:
+    \tag_struct_begin:n
+      {
+        tag=\l__tag_para_main_tag_tl,
+        attribute-class=\l__tag_para_main_attr_class_tl,
+      }
+    #1
+ }
+%    \end{macrocode}
+% \end{taggingplugdecl}
+%
+% \begin{taggingplugdecl}{kernel (para/semantic/end)}
+% This socket should be used if a \UseStructureName{para/semantic}-structure  is closed.
+% The argument allows e.g. to add debug info.
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/semantic/end}{kernel}
+ {
+   #1
+   \__tag_gincr_para_main_end_int:
+   \tag_struct_end:
+ }
+%    \end{macrocode}
+% \end{taggingplugdecl}
+% And now we assign these plugs:
+%    \begin{macrocode}
+\AssignTaggingSocketPlug{para/semantic/begin}{kernel}
+\AssignTaggingSocketPlug{para/semantic/end}{kernel}
+%    \end{macrocode}
+%
+% \begin{taggingsocketdecl}{para/textblock/begin,para/textblock/end}
+% These sockets handle the \UseStructureName{para/textblock} begin and end structure.
+% These are stored in sockets of their own to be able to reuse them in places where only
+% a textblock is needed.
+%
+%    \begin{macrocode}
+\NewTaggingSocket{para/textblock/begin}{1}
+\NewTaggingSocket{para/textblock/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingplugdecl}{kernel (para/textblock/begin)}
+% This tagging socket opens a \UseStructureName{para/textblock} structure and
+% mc. It is used below in the \texttt{para/begin} tagging socket.
+% The argument is used to adapt the debugging label.
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/textblock/begin}{kernel}
+ {
+   \__tag_gincr_para_begin_int:
+   \__tag_check_typeout_v:n {==>~increment~ P \on@line }
+   \tag_struct_begin:n
+     {
+       tag=\l__tag_para_tag_tl
+       ,attribute-class=\l__tag_para_attr_class_tl
+     }
+     \__tag_check_para_begin_show:nn {green}{#1}
+     \tag_mc_begin:n {}
+ }
+%    \end{macrocode}
+% \end{taggingplugdecl}
+%
+% \begin{taggingplugdecl}{kernel (para/textblock/end)}
+% This socket closes a \UseStructureName{para/textblock}-mc and structure.
+% It is used below in the \texttt{para/end} tagging socket.
+% 
+% \TeX{} automatically removes a final space at the end of the paragraph text 
+% but this internal \unskip fails if we add the tagging code after that final space, 
+% so we have to remove any space manually before adding that code.
+% \changes{v1.0z}{2026-05-16}{Add unskip, tagging issue 803}
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/textblock/end}{kernel}
+ {
+   \unskip
+    \__tag_gincr_para_end_int:
+    \__tag_check_typeout_v:n {==>~increment~ /P \on@line }
+    \tag_mc_end:
+    \__tag_check_para_end_show:nn {red}{}
+    \tag_struct_end:
+ }
+%    \end{macrocode}
+% \end{taggingplugdecl}
+% And now we assign these plugs:
+%    \begin{macrocode}
+\AssignTaggingSocketPlug{para/textblock/begin}{kernel}
+\AssignTaggingSocketPlug{para/textblock/end}{kernel}
+%    \end{macrocode}
+%
+% \begin{taggingplugdecl}{kernel (para/begin)}
+% This plug is similar to the block socket currently defined
+% in tagpdf and should overwrite it.
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/begin}{kernel}
+  {
+    \bool_if:NT \l__tag_para_bool
+      {
+        \legacy_if:nF { @inlabel }
+          {
+            \__tag_check_typeout_v:n
+              {==>~ @endpe = \legacy_if:nTF { @endpe }{true}{false} \on@line }
+            \legacy_if:nF { @endpe }
+              {
+                \bool_if:NF \l__tag_para_flattened_bool
+                   {
+                     \UseTaggingSocket{para/semantic/begin}
+                      { \__tag_para_main_store_struct: }
+                   }
+              }
+            \UseTaggingSocket{para/textblock/begin}{NP-}
+       }
+     }
+  }
+%    \end{macrocode}
+% \end{taggingplugdecl}
+% \begin{taggingplugdecl}{kernel (para/end)}
+% This socket is used at the end of paragraphs.
+%    \begin{macrocode}
+\NewTaggingSocketPlug{para/end}{kernel}
+  {
+    \bool_if:NT \l__tag_para_bool
+      {
+        \UseTaggingSocket{para/textblock/end}
+        \bool_if:NF \l__tag_para_flattened_bool
+         {
+           \UseTaggingSocket{para/semantic/end}{}
+         }
+      }
+  }
+%    \end{macrocode}
+% \end{taggingplugdecl}
+% As tagpdf is currently assigning the sockets after the block code we assign
+% if even later (for now):
+%    \begin{macrocode}
+\AddToHook{package/latex-lab-testphase-sec/after}
+  {
+    \AssignTaggingSocketPlug{para/begin}{kernel}
+    \AssignTaggingSocketPlug{para/end}{kernel}
+  }
+%    \end{macrocode}
+%
+% \subsubsection{Tagging socket for targets}
+
+% \begin{taggingsocketdecl}{refstepcounter}
+% When tagging is active we want to track the current structure number
+% when targets are set. This will be mostly used in \cs{refstepcounter}
+% but also if targets are set manually.
+%    \begin{macrocode}
+\NewTaggingSocket{recordtarget}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingplugdecl}{kernel (recordtarget)}
+%    \begin{macrocode}
+%
+\NewTaggingSocketPlug{recordtarget}{kernel}
+  {
+    \tl_if_blank:VF \@currentHref
+    {
+      \prop_gput:Nee
+        \g__tag_struct_dest_num_prop
+        {\@currentHref}
+        {\tag_get:n{struct_num}}
+    }
+  }
+\AssignTaggingSocketPlug{recordtarget}{kernel}
+\ExplSyntaxOff
+%    \end{macrocode}
+% \end{taggingplugdecl}
+%
+% \subsubsection{Tagging Sockets for boxes}
+% \changes{v1.0v}{2025/11/22}{Add sockets for minipage and parbox}
+%
+%    \begin{macrocode}
+\NewTaggingSocket{minipage/before}{0}
+\NewTaggingSocket{minipage/after}{0}
+\NewTaggingSocket{parbox/before}{0}
+\NewTaggingSocket{parbox/after}{0}
+%    \end{macrocode}
+%
+% \subsubsection{Tagging Sockets for lists and blocks}
+% \changes{v1.0s}{2025/08/03}{Add sockets for block code}
+% \begin{taggingsocketdecl}{block/list/label}
+%  A tagging socket around the label in a list.
+%    \begin{macrocode}
+\NewTaggingSocket{block/list/label}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{block/recipe}
+%  A tagging socket to set the tagging recipe.
+%    \begin{macrocode}
+\NewTaggingSocket{block/recipe}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \subsubsection{Tagging sockets for headings}
+% \changes{v1.0u}{2025/10/20}{Tagging sockets for headings added}
+% Tagging headings is quite tricky. The sockets (and plugs)
+% used by the kernel definitions often expect specially formatted arguments.
+% For this reason some of them may not be suitable in other classes or packages.
+% In that case additional sockets (or plugs) might be required.
+%
+% \begin{taggingsocketdecl}{sec/begin, sec/end}
+% These two sockets should surround the whole section by a \texttt{Sect} structure.
+% They should be suited also for classes and packages.
+% The begin socket takes two brace groups are argument: the level and key for the structure
+% (typically \verb|tag=somename|), the end socket takes as argument a level.
+%
+%    \begin{macrocode}
+\NewTaggingSocket{sec/begin}{1}
+\NewTaggingSocket{sec/end}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{sec/title/begin, sec/title/end}
+% These two sockets are used around display heading where the number
+% is on a line of its own.
+% The argument of the begin socket consists of two brace groups containing the level and
+% the title.
+%    \begin{macrocode}
+\NewTaggingSocket{sec/title/begin}{1}
+\NewTaggingSocket{sec/title/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{sec/title/hang}
+% This socket is used in headings with hanging number.
+%    \begin{macrocode}
+\NewTaggingSocket{sec/title/hang}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{sec/title/init,sec/title/split,sec/title/runin/number}
+% These sockets are used by run-in heading to initialize tagging and to split
+% heading and following text and tag the title.
+%    \begin{macrocode}
+\NewTaggingSocket{sec/title/init}{1}
+\NewTaggingSocket{sec/title/split}{0}
+\NewTaggingSocket{sec/title/runin/number}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{sec/title/number}
+% This is a socket to tag the number. It takes two arguments: the level and
+% the content.
+%    \begin{macrocode}
+\NewTaggingSocket{sec/title/number}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \subsubsection{Tagging sockets for toc}
+%
+% \begin{taggingsocketdecl}{toc/contentsline/before,
+%  toc/contentsline/after}
+%  Tagging sockets at the begin and end of contentsline.
+%  They receive \emph{all} contentsline arguments as one argument
+%  in four brace groups. The socket code should then use the parts it needs.
+%    \begin{macrocode}
+\NewTaggingSocket{toc/contentsline/before}{1}
+\NewTaggingSocket{toc/contentsline/after}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{toc/starttoc/before,
+%                    toc/starttoc/after}
+% Tagging sockets for the begin and end of start of \cs{@starttoc}.
+% They take one argument, the extension.
+%    \begin{macrocode}
+\NewTaggingSocket{toc/starttoc/before}{1}
+\NewTaggingSocket{toc/starttoc/after}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{toc/leaders/before,
+%                    toc/leaders/after}
+% Tagging sockets to make the dot leaders an artifact.
+% They do not take an argument.
+%    \begin{macrocode}
+\NewTaggingSocket{toc/leaders/before}{0}
+\NewTaggingSocket{toc/leaders/after}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \subsubsection{Tagging support for marginpar}
+%
+% \begin{taggingsocketdecl}{marginpar/begin,marginpar/end}
+% \changes{v1.0n}{2025/02/21}{move marginpar sockets}
+%    \begin{macrocode}
+\NewTaggingSocket{marginpar/begin}{0}
+\NewTaggingSocket{marginpar/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+
+%
+% \subsubsection{Tagging support for table/tabular packages}
+%
+% The code uses a number of sockets to inject the tagging
+% commands. These can be easily set to a noop-plug in case the
+% automated tagging is not wanted.
+%
+% \begin{taggingsocketdecl}{tbl/cell/begin,
+%                    tbl/cell/end,
+%                    tbl/pcell/end,
+%                    tbl/pcell/end,
+%                    tbl/row/begin,
+%                    tbl/row/end,
+%                   }
+%     At first sockets for the begin and end of cells and table rows:
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/cell/begin}{0}
+\NewTaggingSocket{tbl/cell/end}{0}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/row/begin}{0}
+\NewTaggingSocket{tbl/row/end}{0}
+%    \end{macrocode}
+%    Multi-line cells have their own sockets (as they start out in
+%    vertical mode and need different treatment).
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/pcell/begin}{0}
+\NewTaggingSocket{tbl/pcell/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{tbl/init}
+%    This socket should be at the begin of the table, inside a group.
+%    It is used for settings such as disabling para-tagging inside the
+%    table.  This socket
+%    can perhaps be merged later into the begin-sockets.
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/init}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{tbl/init/celldata}
+%    This socket is used in \cs{tbl_init_cell_data_for_table}, the command
+%    that stores and initialize cell data to handle nested tables.
+%    It can be used to restore similar tagging related values
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/init/celldata}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{tbl/finalize}
+%    To fine tune the structure (change cells to header cells, remove
+%    unwanted structures, move a foot to the end, etc.). We also need a
+%    socket that is executed at the end of the table but \emph{before}
+%    all the variables are restored to the outer or default values.
+%    The code in the socket can make assignments, but probably
+%    shouldn't do typesetting and not write whatsits.
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/finalize}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{tbl/restore/celldata}
+%    This socket is used in \cs{tbl_restore_outer_cell_data:}, the command
+%    that restores cell data when quitting a nested table. It can be used to restore
+%    similar tagging related values
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/restore/celldata}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+
+% \begin{taggingsocketdecl}{tbl/colspan}
+%    This socket is used to manage spanning cells, e.g., a
+%    \cs{multicolumn}. It expects one argument (the number of cells
+%    spanned) and if tagging is enabled set appropriate tag attributes
+%    in the background. We probably need a similar socket for row
+%    spans eventually.
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/colspan}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+
+
+% \begin{taggingsocketdecl}{tbl/hmode/begin,
+%                    tbl/hmode/end,
+%                    tbl/vmode/begin,
+%                    tbl/vmode/end
+%                   }
+%
+%    These sockets are used in the begin and end code of environments,
+%    to allow a fast enabling and disabling of the tagging. We
+%    distinguish between tables that can be used inside paragraphs and
+%    standalone tables such as \env{longtable} that are always in
+%    vertical mode.
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/hmode/begin}{0}
+\NewTaggingSocket{tbl/hmode/end}{0}
+\NewTaggingSocket{tbl/vmode/begin}{0}
+\NewTaggingSocket{tbl/vmode/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+%
+% \begin{taggingsocketdecl}{tbl/longtable/init,
+%                    tbl/longtable/finalize}
+%    \env{longtable} needs its own sockets to fine tune the structure.
+%    Simply switching the plug in the previous socket interferes with
+%    enabling/disabling the tagging.
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/longtable/init}{0}
+\NewTaggingSocket{tbl/longtable/finalize}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{tbl/longtable/head,
+%                    tbl/longtable/foot}
+%    Header and footer boxes need special handling because they are repeatedly
+%    used.
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/longtable/head}{0}
+\NewTaggingSocket{tbl/longtable/foot}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+% \begin{taggingsocketdecl}{tbl/leaders/begin,
+%                    tbl/leaders/end}
+%    Sockets around leaders such as rules or dotted lines, that should
+%    be tagged as artifacts, used, for example, in \cs{cline}.
+% \changes{v1.0c}{2024/07/13}{Sockets for \cs{cline} leaders added (tagging/134)}
+%    \begin{macrocode}
+\NewTaggingSocket{tbl/leaders/begin}{0}
+\NewTaggingSocket{tbl/leaders/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \subsubsection{Tagging Support for floats}
+%
+% \begin{taggingsocketdecl}{float/hmode/begin,
+%                    float/hmode/end}
+%  These sockets are used if the float is called in
+%  hmode.
+% \changes{v1.0h}{2024/09/13}{Sockets for floats added}
+%    \begin{macrocode}
+\NewTaggingSocket{float/hmode/begin}{0}
+\NewTaggingSocket{float/hmode/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{float/begin,
+%                    float/end}
+%  These sockets start and stop the float structure.
+%    \begin{macrocode}
+\NewTaggingSocket{float/begin}{0}
+\NewTaggingSocket{float/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+% \begin{taggingsocketdecl}{caption/begin,
+%                    caption/end}
+%  These sockets are used in \cs{@makecaption}.
+%  They open and close the \texttt{Caption} structure.
+%  Their default plugs assume that they are used in
+%  vmode. The argument of the begin socket is
+%  the structure number of the parent float. If it is
+%  empty the current structure number is used.
+%    \begin{macrocode}
+\NewTaggingSocket{caption/begin}{1}
+\NewTaggingSocket{caption/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{caption/label/begin,
+%                    caption/label/end}
+%  These sockets are used in \cs{@makecaption} around the
+%  label. Their default plugs ensure that
+%  the label is outside the paragraph and that
+%  the rest of the caption uses flattened para mode. If the
+%  caption is not in a hbox, the \texttt{para/begin}
+%  socket should follow to properly start the paragraph.
+%    \begin{macrocode}
+\NewTaggingSocket{caption/label/begin}{0}
+\NewTaggingSocket{caption/label/end}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+% \subsection{Tagging support for output routines}
+%
+% \changes{v1.0m}{2025/02/14}{Tagging support for output routines added}
+%
+% \begin{taggingsocketdecl}{build/page/header}
+% \changes{v1.0m}{2025/02/14}{Tagging socket added}
+% \begin{taggingsocketdecl}{build/page/footer}
+% \changes{v1.0m}{2025/02/14}{Tagging socket added}
+%    These sockets receive the formatted running header/footer in its
+%    second argument (the first is not used) following the convention
+%    of tagging sockets, i.e., only the second argument is processed
+%    if tagging is not active.
+%    \begin{macrocode}
+\NewTaggingSocket{build/page/header}{2}
+\NewTaggingSocket{build/page/footer}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+% \end{taggingsocketdecl}
+%
+%
+%
+% \begin{taggingsocketdecl}{build/column/outputbox}
+% \changes{v1.0m}{2025/02/14}{Tagging socket added}
+%    This socket is used to add any missing tagging structures to the
+%    \cs{@outputbox} box, if necessary.
+%    \begin{macrocode}
+\NewTaggingSocket{build/column/outputbox}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+%
+% \begin{taggingsocketdecl}{build/column/footins}
+% \changes{v1.0m}{2025/02/14}{Tagging socket added}
+%    This socket is used to add any missing tagging structures to the
+%    \cs{footins} box, if necessary.
+%    \begin{macrocode}
+\NewTaggingSocket{build/column/footins}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+%
+%
+%
+%
+% \begin{taggingsocketdecl}{page@sofar}
+%
+%  This socket is declared and used in the \pkg{multicol} output routines.
+%  Only listed for reference.
+%    \begin{macrocode}
+%\NewTaggingSocket{page@sofar}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \subsection{Tagging support for math}
+%
+% \subsubsection{General sockets}
+%
+% The following sockets are the main math sockets.
+%
+% \changes{v1.0n}{2025/02/19}{Moved math sockets into lttagging}
+%    \begin{macrocode}
+\NewTaggingSocket{math/inline/begin}{0}
+\NewTaggingSocket{math/inline/end}{0}
+\NewTaggingSocket{math/inline/formula/begin}{2}
+\NewTaggingSocket{math/inline/formula/end}{0}
+\NewTaggingSocket{math/display/begin}{0}
+\NewTaggingSocket{math/display/end}{0}
+\NewTaggingSocket{math/display/formula/begin}{2}
+\NewTaggingSocket{math/display/formula/end}{0}
+\NewTaggingSocket{math/display/tag/begin}{0}
+\NewTaggingSocket{math/display/tag/end}{0}
+%    \end{macrocode}
+%
+% \subsubsection{Sockets specific for luamml}
+% \paragraph{Save sockets}
+%  These sockets are wrappers around the \cs{luamml_save:...} commands.
+%  They take an argument which should contain the argument of the save command.
+%
+% \begin{taggingsocketdecl}{math/luamml/save/nn}
+%  The argument should contain the two arguments of the command.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/save/nn}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/save/nNn}
+%  The argument should contain the three arguments of the command.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/save/nNn}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \paragraph{Socket to annotate}
+%
+% \begin{taggingsocketdecl}{math/luamml/annotate/false}
+%  These socket can be used for content that should be annotated
+%  with \texttt{core=false}
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/annotate/false}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \paragraph{Array sockets} These sockets will be used in \pkg{array} to
+% add luamml support to the array environment.
+%
+% \begin{taggingsocketdecl}{math/luamml/array/save}
+%
+%  This socket will be used in \cs{endarray}. The plug is set by luamml.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/array/save}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/array/finalize}
+%
+%  This socket will be used in \cs{endarray}. The plug is set by luamml.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/array/finalize}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/array/initcol}
+%  This socket will be used in \cs{@classz}. The plug is set by luamml.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/array/initcol}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+% \begin{taggingsocketdecl}{math/luamml/array/finalizecol}
+%  This socket will be used in \cs{@classz}. The plug is set by luamml.
+% The argument sets the type of the column.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/array/finalizecol}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \paragraph{Alignment environments}
+% Multiline environments like \texttt{align}, \texttt{multline} or \texttt{gather}
+% are tagged as \texttt{mtable}.
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/finalizecol}
+% This sockets is used at the end of alignment cells and adds them to
+% the row. The argument passes a type like \texttt{last} or \texttt{box}.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/finalizecol}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/finalize}
+% This sockets is used at the end of alignment environment to finalize the
+% mtable code. It should be used normally with \cs{UseExpandableTaggingSocket}.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/finalize}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/aligncol}
+% This sockets is used in multline to add attributes
+% describing the alignment to the left and right.
+% It takes an argument, the alignment.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/aligncol}{1}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/innertable/save}
+% This socket is used in \cs{endaligned} to save the table. It takes no argument.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/innertable/save}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/smallmatrix/save}
+% This socket is used in \cs{endsmallmatrix} to save the table. It takes no argument.
+% TODO: Check if this socket and the innertable socket can/should be merged into a more
+% generic version.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/smallmatrix/save}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/innertable/finalize}
+% This socket is used e.g. in \cs{endsmallmatrix} and \cs{gathered} to finalize the table.
+% It takes no argument.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/innertable/finalize}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/mtable/tag/save}
+% This socket is used to save a tag for later use.
+% has been save before.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/tag/save}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+
+% \begin{taggingsocketdecl}{math/luamml/mtable/tag/set}
+% This socket should be used when a tag is placed. It inserts a tag that
+% has been save before.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/mtable/tag/set}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \paragraph{mbox socket}
+%
+% \begin{taggingsocketdecl}{math/luamml/hbox}
+%  This socket is used around \cs{hbox}
+%  inside an \cs{mbox}, \cs{makebox} and \cs{text} and annotates
+%  the content if the \cs{hbox} is used inside math.
+%  The real plug is set by luamml but a default plug is defined
+%  here so that the socket can also be used if luamml is not used.
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/hbox}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+%
+% \paragraph{math phantom sockets}
+% \changes{1.0m}{2025-01-27}{add sockets for math phantom commands}
+% \begin{taggingsocketdecl}{math/luamml/finph@nt}
+%  This socket handles the annotation of \cs{finph@nt}
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/finph@nt}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \begin{taggingsocketdecl}{math/luamml/finph@nt}
+%  This socket handles the annotation of \cs{finsm@sh}
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/finsm@sh}{2}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+% \paragraph{Artifact root sign}
+%
+% \begin{taggingsocketdecl}{math/luamml/artifact}
+% Unicode characters like a root sign should be marked as artifacts
+% to avoid duplication, e.g., in derivation if mathml
+% structure elements are used that imply the meaning.
+%
+%    \begin{macrocode}
+\NewTaggingSocket{math/luamml/artifact}{0}
+%    \end{macrocode}
+% \end{taggingsocketdecl}
+%
+% \subsection{MathML intent attributes}
+% \begin{macro}{\MathMLintent,\MathMLarg}
+% Stub definitions here to allow these commands to be used in packages
+% whether or not tagging is enabled.
+%    \begin{macrocode}
+\ExplSyntaxOn
+\cs_new_protected:Npn\MathMLintent#1#2{#2}
+\cs_new_protected:Npn\MathMLarg#1#2{#2}
+\ExplSyntaxOff
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Symbolic structure names}
+% \begin{macro}{\NewStructureName,\UseStructureName,\AssignStructureRole}
+% Stub definitions here to allow these commands to be used in packages
+% whether or not the tagging support code is loaded.
+%    \begin{macrocode}
+%<@@=tag>
+\ExplSyntaxOn
+\cs_new_protected:Npn\NewStructureName#1
+ {
+   \tl_new:c  {l_@@_name_#1_tl}
+   \tl_set:cn {l_@@_name_#1_tl}{NonStruct}
+ }
+\cs_new:Npn\UseStructureName#1
+ {
+   \cs:w l_@@_name_#1_tl\cs_end:
+ }
+\cs_new_protected:Npn\AssignStructureRole#1#2
+ {
+   \tl_set:cn { l_@@_name_#1_tl }{#2}
+ }
+\ExplSyntaxOff
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \section{For lttab.dtx parked here for now}
+%
+%
+%    \begin{macrocode}
+%<@@=tbl>
+\ExplSyntaxOn
+%    \end{macrocode}
+%
+%
+% \subsection{Variables for row, column and span counting}
+%
+%  This part needs a decision on names for various integer registers
+%  as well as a decision if those should be also made available for
+%  \LaTeXe{}-style packages in form of 2e names and or as
+%  non-internals for the L3 programming layer.
+%
+%  At the moment they are all internal but this probably has to change.
+%
+%  \begin{macro}{
+%     \g_@@_col_int,
+%     \g_@@_row_int,
+%     \g_@@_span_tl,
+%     \g_@@_table_cols_tl}
+%
+%    \cs{g_@@_row_int} holds the current row number in the table. The
+%    value \texttt{0} means we haven't yet processed the table
+%    preamble (or in case of longtable are just in front of the next
+%    chunk to be processed). It is incremented by every \cs{cr}
+%    including the one ending the table preamble.
+%
+%    TODO: due to the gymnastics needed inside the longtable code the
+%    row counter is directly exposed there rather than hidden by
+%    interfaces. This needs changing when it is decided how to manage
+%    these counters.
+%
+%    \cs{g_@@_col_int} holds the current column number. The value
+%    \texttt{0} means we have not yet started the table or just finished a table row
+%    (with \verb=\\= typically); any other positive value means we
+%    are currently typesetting a cell in that column in some row
+%    (denoted by the \cs{g_@@_row_int}).
+%
+%    In a \cs{multicolumn} it holds the column number of the first
+%    spanned column and \cs{g_@@_span_tl} the info how many cells are
+%    spanned.
+%
+%    \cs{g_@@_span_tl} is normally \texttt{1} except in a
+%    \cs{multicolumn} cell.
+%    \begin{macrocode}
+\int_new:N \g_@@_col_int
+\int_new:N \g_@@_row_int
+\tl_new:N  \g_@@_span_tl
+\tl_new:N  \g_@@_table_cols_tl
+
+\tl_gset:Nn \g_@@_span_tl {1}
+\tl_gset:Nn \g_@@_table_cols_tl {0}  % indicates outer level
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\l_@@_saved_col_tl,\l_@@_saved_row_tl,
+%                \l_@@_saved_span_tl,\l_@@_saved_table_cols_tl}
+%
+%    Saving the outer values if we are nesting tables is necessary (as
+%    the above variables are globally altered). For this we always use
+%    token lists because they don't change and we do not need to blow
+%    additional integer registers.
+%    \begin{macrocode}
+\tl_new:N \l_@@_saved_col_tl
+\tl_new:N \l_@@_saved_row_tl
+\tl_new:N \l_@@_saved_span_tl
+\tl_new:N \l_@@_saved_table_cols_tl
+
+\tl_set:Nn \l_@@_saved_col_tl{0}
+\tl_set:Nn \l_@@_saved_row_tl{0}
+\tl_set:Nn \l_@@_saved_span_tl{1}
+\tl_set:Nn \l_@@_saved_table_cols_tl{0}  % indicates outer level
+%    \end{macrocode}
+%  \end{macro}
+%
+%  \begin{macro}{\g_@@_missingcells_int}
+% This will contain the number of missing cells in a row:
+%    \begin{macrocode}
+\int_new:N \g_@@_missing_cells_int
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%
+%
+% \subsection{Tracing/debugging}
+%
+%  \begin{macro}{\DebugTablesOn,\DebugTablesOff}
+%
+%    \begin{macrocode}
+\def\DebugTablesOn{
+  \cs_set_eq:NN \@@_trace:n \typeout
+}
+\def\DebugTablesOff{
+  \cs_set_eq:NN \@@_trace:n \use_none:n
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\cs_new_eq:NN \@@_trace:n \use_none:n
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+% \subsection{Interface commands}
+%
+% All interface commands for the cell number determination have to be
+% public on some level because they are needed in other packages as
+%  well, e.g., longtable. We may or may not also want to provide 2e
+%  style names for them.
+%
+%  \begin{macro}{\tbl_update_cell_data:}
+%    Updating cell data in columns after the first means we have to
+%    increment the \cs{g_@@_col_int} by the span count of the previous
+%    cell (in case it was a \cs{multicolumn}) and then reset the
+%    \cs{g_@@_span_tl} to one (as the default).
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_update_cell_data: {
+        \int_gadd:Nn \g_@@_col_int { \g_@@_span_tl }
+        \tl_gset:Nn  \g_@@_span_tl {1}
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%  \begin{macro}{\tbl_count_table_cols:}
+%    Current implementation of \cs{@mkpream} uses the scratch counter
+%    \cs{count@} to keep track of the number of toks registers it needs
+%    (2 per column), but this can't be used as it counts also
+%    insertions made with \verb+!{}+ and \verb+@{}+.
+%    So similar as does longtable for \cs{LT@cols} we count the
+%    numbers of ampersands instead.
+%    \begin{macrocode}
+\cs_new:Npn \tbl_count_table_cols:  {
+  \seq_set_split:NnV\l_@@_tmpa_seq {&}\@preamble
+  \tl_gset:Ne \g_@@_table_cols_tl { \seq_count:N \l_@@_tmpa_seq }
+  \@@_trace:n { ==>~ Table~ has~ \g_@@_table_cols_tl \space columns }
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\l_@@_tmpa_seq}
+%
+%    \begin{macrocode}
+\seq_new:N \l_@@_tmpa_seq
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%  \begin{macro}{\tbl_count_missing_cells:n}
+%
+%    We might have the situation that some table package has not
+%    implemented the \cs{tbl_count_table_cols:} in which case
+%    \cs{g_@@_table_cols_tl} would always be zero and we would get an
+%    error below when we try to determine the missing cells, so bypass
+%    that calculation if we aren't doing tagging (there the packages
+%    should have the proper code added). Recall that this is code,
+%    that is called by \verb=\\= and an old table package might rely
+%    on whatever the \LaTeX{} kernel offers here.
+%    \begin{macrocode}
+\cs_new:Npn \tbl_count_missing_cells:n #1 {
+  \tag_if_active:T {
+    \int_compare:nNnT \g_@@_col_int > 0
+      {
+        \int_gset:Nn \g_@@_missing_cells_int
+            {
+              \g_@@_table_cols_tl
+            - \g_@@_col_int
+            - \g_@@_span_tl
+            + 1
+            }
+        \int_compare:nNnT \g_@@_missing_cells_int < 0 \ERRORmissingcells % should not happen
+        \@@_trace:n{==>~
+          (#1)~
+          This~ row~ needs~
+          \int_use:N \g_@@_missing_cells_int \space
+          additional~ cell(s)
+        }
+      }
+  }
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%  \begin{macro}{\tbl_init_cell_data_for_table:}
+%
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_init_cell_data_for_table: {
+  \tl_set:No \l_@@_saved_col_tl {\int_use:N \g_@@_col_int }
+  \tl_set:No \l_@@_saved_row_tl {\int_use:N \g_@@_row_int }
+  \tl_set_eq:NN \l_@@_saved_table_cols_tl  \g_@@_table_cols_tl
+  \tl_set_eq:NN \l_@@_saved_span_tl  \g_@@_span_tl
+%
+  \@@_trace:n { ==>~ saved~cell~data:~
+                \l_@@_saved_row_tl,
+                \l_@@_saved_col_tl,
+                \l_@@_saved_span_tl \space
+                (
+                \int_compare:nNnTF \l_@@_saved_table_cols_tl = 0
+                    { outer~ level }
+                    { max:~ \l_@@_saved_table_cols_tl }
+                )
+          }
+%    \end{macrocode}
+% Tagging has to initialize cell data too.
+%    \begin{macrocode}
+  \UseTaggingSocket{tbl/init/celldata}
+%    \end{macrocode}
+%    These are the initial values when starting a table:
+%    \begin{macrocode}
+  \int_gzero:N \g_@@_row_int
+  \int_gzero:N \g_@@_col_int
+  \tl_gset:Nn  \g_@@_span_tl {1}
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%
+%  \begin{macro}{\tbl_update_cell_data_for_next_row:}
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_update_cell_data_for_next_row: {
+      \int_gincr:N \g_@@_row_int          % this row about to start
+      \int_gzero:N \g_@@_col_int          % we are before first col
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\tbl_init_cell_data_for_row:}
+%    If we start processing a cell in the first column  we set
+%    \cs{g_@@_col_int} to \texttt{1} as we are no longer "at" but "in"
+%    the first column. We also set \cs{g_@@_span_tl} to its default
+%    value (not spanning cells).
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_init_cell_data_for_row: {
+        \int_gset:Nn \g_@@_col_int {1}
+        \tl_gset:Nn  \g_@@_span_tl {1}
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\tbl_if_row_was_started:T,
+%                \tbl_if_row_was_started:TF}
+%    We use \cs{g_@@_col_int} equal zero to indicate that we are just
+%    after a TR (i.e.n between rows or at the very beginning of the
+%    table). Using the row
+%    count is not so good as longtable may split the table in chunks.
+%
+%    These conditionals have to be expandable (i.e., unprotected) as
+%    they are sometimes executed when \TeX{} is scanning inside a table.
+%    \begin{macrocode}
+\cs_new:Npn \tbl_if_row_was_started:T {
+      \int_compare:nNnT \g_@@_col_int > 0
+}
+\cs_new:Npn \tbl_if_row_was_started:TF {
+      \int_compare:nNnTF \g_@@_col_int > 0
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%  \begin{macro}{\tbl_gzero_row_count:,\tbl_gincr_row_count:,\tbl_gdecr_row_count:}
+%    This here is basically a temporary interface. What it will be in
+%    the end depends on what we decide concerning exposing row and
+%    column counters, if they stay internal we need something like
+%    this here (perhaps using \texttt{gincr} etc, or perhaps some
+%    other names in the first place).
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_gzero_row_count: {
+  \int_gzero:N \g_@@_row_int
+}
+\cs_new_protected:Npn \tbl_gincr_row_count: {
+  \int_gincr:N \g_@@_row_int
+}
+\cs_new_protected:Npn \tbl_gdecr_row_count: {
+  \int_gdecr:N \g_@@_row_int
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%  \begin{macro}{\tbl_inbetween_rows:}
+%    Again name is not really brilliant so far.
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_inbetween_rows: {
+       \int_gzero:N  \g_@@_col_int
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%
+%
+%
+%  \begin{macro}{\tbl_restore_outer_cell_data:}
+%
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_restore_outer_cell_data: {
+  \int_gset:Nn \g_@@_col_int { \l_@@_saved_col_tl }
+  \int_gset:Nn \g_@@_row_int { \l_@@_saved_row_tl }
+  \tl_gset_eq:NN \g_@@_span_tl \l_@@_saved_span_tl
+  \tl_gset_eq:NN \g_@@_table_cols_tl   \l_@@_saved_table_cols_tl
+  \UseTaggingSocket{tbl/restore/celldata}
+  \@@_trace:n { ==>~ restored~cell~data:~
+                \int_use:N \g_@@_row_int,
+                \int_use:N \g_@@_col_int,
+                \l_@@_saved_span_tl \space
+                (
+                \int_compare:nNnTF \g_@@_table_cols_tl = 0
+                    { outer~ level }
+                    { max:~ \g_@@_table_cols_tl }
+                )
+              }
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%  \begin{macro}{\tbl_update_multicolumn_cell_data:n}
+%    This macro updates \cs{g_@@_col_int} and \cs{g_@@_span_tl} inside
+%    a \cs{multicolumn} and possibly calls the tagging socket
+%    \texttt{tbl/row/begin}.
+%    \begin{macrocode}
+\cs_new_protected:Npn \tbl_update_multicolumn_cell_data:n #1 {
+%    \end{macrocode}
+%    We execute socket for tagging only if this \cs{multicolumn}
+%    replaces the preamble of the first column. In that case we also have
+%    to set \cs{g_@@_col_int} to 1 because this is no longer done in the
+%    preamble for the cell either.
+%    \begin{macrocode}
+   \int_compare:nNnTF \g_@@_col_int = 0
+       {
+         \UseTaggingSocket{tbl/row/begin}
+         \int_gset:Nn \g_@@_col_int {1}
+       }
+%    \end{macrocode}
+%    If we are in a later column we use \cs{g_@@_span_tl} from the
+%    previous column to update.
+%    \begin{macrocode}
+       {
+         \int_gadd:Nn \g_@@_col_int { \g_@@_span_tl }
+       }
+%    \end{macrocode}
+%    Then we set the span value so that it can be use in the next column.
+%    \begin{macrocode}
+   \tl_gset:Nn \g_@@_span_tl {#1}
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%  \begin{macro}{\tbl_crcr:n}
+%    This macro is used instead of the usual \cs{crcr} at the end of a
+%    table. It is deliberately defined without protection because it
+%    may get expanded by the scanning mechanism of low-level \TeX{}
+%    after a final \cs{cr} (aka \verb=\\=) in the table. In that case
+%    it shouldn't stop the expansion and the conditional inside will
+%    be false, thus it just vanishes without doing anything. If there
+%    are missing cells (in which case we also haven't see \cs{cr} yet)
+%    the macro \cs{tbl_count_missing_cells:n} is executed and
+%    then the row is finished with a final \cs{cr}.
+%    \begin{macrocode}
+\cs_new:Npn \tbl_crcr:n #1 {
+    \int_compare:nNnT \g_@@_col_int > 0
+        {
+          \tbl_count_missing_cells:n {#1}
+        }
+%    \end{macrocode}
+%    Even if we are at the start of a row we my have to do a \cs{cr},
+%    so we do a \cs{crcr} always at the end.
+% \changes{v1.0b}{2024/06/10}
+%         {Always issue a \cs{crcr} even if we are at the start of a
+%          row to avoid problems with tabulary and similar code}
+%    \begin{macrocode}
+    \crcr
+}
+%    \end{macrocode}
+%  \end{macro}
+%
+%
+%
+%    \begin{macrocode}
+\ExplSyntaxOff
+%<@@=>
+%    \end{macrocode}
+%
+% \changes{v1.0h}{2024/09/20}{moved \cs{@kernel@refstepcounter} into ltxref}
+%    This is needed for \pkg{longtable} because \cs{refstepcounter} is
+%    setting up a target when \pkg{hyperref} is loaded and we don't
+%    want that in \pkg{longtable}.%%
+%    Prevent longtable patching by hyperref until hyperref does so automatically:
+%    \begin{macrocode}
+\def\hyper@nopatch@longtable{}
+%    \end{macrocode}
+%
+%
+% Should there be a module?
+%
+%    \begin{macrocode}
+%<latexrelease>\NewModuleRelease{2024/06/01}{lttagging}
+%<latexrelease>                 {Tagging support}
+%    \end{macrocode}
+%
+%
+%
+%
+%    \begin{macrocode}
+%<latexrelease>\IncludeInRelease{0000/00/00}{lttagging}%
+%<latexrelease>                 {Undo tagging support}
+%<latexrelease>
+%<latexrelease>
+%<latexrelease>
+%<latexrelease>\EndModuleRelease
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+%</2ekernel|latexrelease>
+%    \end{macrocode}
+%
+% \Finale
+%

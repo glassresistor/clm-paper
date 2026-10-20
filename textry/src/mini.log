@@ -1,0 +1,24 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=plain 2026.10.19)  19 OCT 2026 17:55
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**mini.tex
+(./mini.tex
+! expl3 Error: No expl3 loader detected!.
+\PackageError ...p {#3}\errmessage {#1 Error: #2!}
+                                                  
+\next ...ct loader. Loading of expl3 will abort. }
+                                                  \endgroup \endinput 
+l.41 \next
+          
+? 
+! Emergency stop.
+\PackageError ...p {#3}\errmessage {#1 Error: #2!}
+                                                  
+\next ...ct loader. Loading of expl3 will abort. }
+                                                  \endgroup \endinput 
+l.41 \next
+          
+You have attempted to use the expl3 code directly rather than using the correct
+ loader. Loading of expl3 will abort. 
+
+No pages of output.

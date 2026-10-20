@@ -1,0 +1,153 @@
+This is METAFONT, Version 2.71828182 (preloaded base=exbase 2026.10.19)  19 OCT 2026 19:46
+**&exbase build.tex
+(build.tex (tcrm1000.mf (/usr/share/texmf-dist/fonts/source/jknappen/ec/tcrm.mf
+(/usr/share/texmf-dist/fonts/source/jknappen/ec/txsymb.mf
+ Ok (/usr/share/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texmf-dist/fonts/source/jknappen/ec/txpseudo.mf
+ Ok) (/usr/share/texmf-dist/fonts/source/jknappen/ec/txaccent.mf
+ Ok
+Grave accent [0]
+Acute accent [1]
+Circumflex (hat) accent [2]
+Tilde (squiggle) accent [3]
+Umlaut (double dot) accent [4]
+Double acute accent (Long Hungarian umlaut accent) [5]
+Scandinavian circle accent [6]
+Hachek (check) accent [7]
+Breve accent [8]
+Macron (bar) accent [9]
+Dot accent [10]
+Cedilla accent [11]
+Ogonek [12]
+Capital tie accent [27]
+New capital tie accent [29])
+(/usr/share/texmf-dist/fonts/source/jknappen/ec/txgen.mf
+ Ok
+Cross (death symbol) [100]
+Rings (marriage symbol) [109]
+Five-pointed star (birth symbol) [98]
+Divided rings (divorce symbol) [99]
+Leaf [108]) (/usr/share/texmf-dist/fonts/source/jknappen/ec/txsymbol.mf
+ Ok
+Single straight base quote [13]
+Double straight base quotes [18]
+twelve u dash [21]
+three quarters em dash [22]
+Capital compound word mark [23]
+Leftward arrow [24]
+Rightward arrow [25]
+Tie accent [26]
+New tie accent [28]
+Ascender height compound word mark [31]
+Blank symbol [32]
+Dollar sign [36]
+Straight single quote [39]
+Comma [44]
+Double hyphen or short equals sign [45]
+Period [46]
+Asterisk at the axis [42]
+Fraction [47]
+Left angle bracket [60]
+Minus sign [61]
+Right angle bracket [62]
+Mho sign (turned Omega) [77]
+Big circle for copyright, etc [79]
+Ohm sign (ISO 6937) [87]
+Musical note (one eigth note) [110]
+Left semantic bracket [91]
+Right semantic bracket [93]
+Upward arrow [94]
+Downward arrow [95]
+Backwards tick mark [96]
+Low lying tilde (squiggle) [126]
+Double hyphen-hyphenchar [127]
+Breve [128]
+Hachek (Caron) [129]
+Double tick mark (inch sign) [130]
+Double backwards tick mark [131]
+Dagger mark [132]
+Double dagger mark [133]
+Double vertical line (norm or cardinality) [134]
+Per mill sign [135]
+Bullet [136]
+Centigrade sign [137]
+Oldstyle dollar sign [138]
+Oldstyle cent sign [139]
+Florin sign (The letter f) [140]
+Colon sign or Cedi sign [141]
+Won sign [142]
+Naira sign [143]
+Guarani sign [144]
+Peso sign [145]
+Lira sign [146]
+Recipe sign [147]
+Interrobang [148]
+Gnaborretni [149]
+Dong sign [150]
+Trademark [151]
+Per ten thousand sign [152]
+Alternate pilcrow sign [153]
+Baht sign [154]
+Numero sign [155]
+Abzueglich sign [156]
+Aestimated sign (large e) [157]
+Open bullet [158]
+Servicemark [159]
+Left square bracket with quill [160]
+Right square bracket with quill [161]
+Cent sign [162]
+Sterling sign [163]
+Currency sign [164]
+Yen symbol [165]
+Broken vertical bar [166]
+Section sign [167]
+Umlaut (double dot) accent [168]
+Copyright [169]
+Copyleft [171]
+Logical not sign [172]
+Circled P [173]
+Registered [174]
+High bar (Macron) [175]
+Plus-or-minus sign [177]
+Degree sign [176]
+Tick mark [180]
+Micro sign [181]
+Paragraph mark [182]
+Centered dot [183]
+Reference mark [184]
+Root sign [187]
+Euro currency sign [191]
+Times operator [214]
+Elementary division operator [246])
+(/usr/share/texmf-dist/fonts/source/jknappen/ec/txromod.mf
+ Ok
+Oldstyle numeral 0 [48]
+Oldstyle numeral 1 [49]
+Oldstyle numeral 2 [50]
+Oldstyle numeral 3 [51]
+Oldstyle numeral 4 [52]
+Oldstyle numeral 5 [53]
+Oldstyle numeral 6 [54]
+Oldstyle numeral 7 [55]
+Oldstyle numeral 8 [56]
+Oldstyle numeral 9 [57])
+(/usr/share/texmf-dist/fonts/source/jknappen/ec/txrsuper.mf
+ Ok
+Superscript numeral 1 [185]
+Superscript numeral 2 [178]
+Superscript numeral 3 [179]
+Female ordinal indicator [170]
+Male ordinal indicator [186])
+(/usr/share/texmf-dist/fonts/source/jknappen/ec/txrfract.mf
+ Ok
+Fraction one quarter [188]
+Fraction one half [189]
+Fraction three quarters [190]) ) ) ) ) 
+Here is how much of METAFONT's memory you used:
+ 254 strings out of 5743
+ 3085 string characters out of 73228
+ 55985 words of memory out of 5000000
+ 1019 symbolic tokens out of 9500
+ 14i,79n,16r,34p,209b stack positions out of 300i,300n,1000r,150p,200000b
+
+Output written on build.2602gf (128 characters, 233136 bytes).

@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+\begin{document}
+\section{Introduction}
+Managing finite context windows has become a first-class problem for conversational and agentic LLM systems. The external-memory lineage (MemGPT, MemoryBank, A-MEM, Mem0) treats memory as a database consulted by the model; the long-context lineage asks whether the base model itself can use very large inputs (RULER, LongMemEval, LoCoMo), while the serving lineage compresses the KV cache (H$_2$O, SnapKV, StreamingLLM) or pages it efficiently (PagedAttention).
+The Context Language Models paper (Shao et al., arXiv:2609.37725) unifies these in an elegant way: context becomes a file the model edits with unrestricted updates, learning what is worth keeping. Their results are striking---higher accuracy at fewer FLOPs on BrowseComp-Plus, EdgeBench and a multi-repository swarm task---but the implementation carries a heavy serving price: rewriting the context file invalidates the KV cache each request, so their gains come partly from co-designed serving (Suffix Cache Reuse).
+
+This paper describes \textbf{clm-mem}\footnote{\texttt{clm-mem} is developed in the workspace directory \texttt{clm-mem/}; code, README and tests referenced here are the files of that repository at version~0.3.0.}, a harness designed around one question: \emph{what do we need to keep from CLMs for it to work off-the-shelf on any OpenAI-compatible server, without fine-tuning and without new KV cache strategies?}
+Our answer has two parts that mirror the paper's core ideas:
+\begin{enumerate}
+\item \textbf{Self-classification.} The same model that reads and writes text also classifies its own context---either inline while decoding (wrapping durable content in \verb|<longterm>|/\verb|<shortterm>| markers) or through a cheap post-turn router pass over the untagged blocks of this turn.
+\item \textbf{Context as a mirrored file.} The live window is serialized every turn to \texttt{context.md} and \texttt{context.jsonl} using the paper-style \verb|[[CTX_TURN n role=... tag=...]]| markers, so the context remains an inspectable artifact---and a hook for future work that lets stronger models edit it directly.
+\end{enumerate}
+What we deliberately drop is unrestricted editing of past turns: instead, a deterministic eviction engine enforces the token budget in three phases. The model decides \emph{what} matters and \emph{how important} it is by what it writes into context; the hardware keeps \emph{reliable expectations} about its load. Crucially, compaction only fires when the window reaches its maximum size---it never rewrites mid-turn---so KV churn per conversation is reduced relative to per-request context rewriting, and any improvement in cache management benefits both designs.
+
+\paragraph{Contributions}
+\begin{itemize}
+\item A complete, tested implementation of a CLM-inspired memory harness (3{,}012 lines of Python across 14 modules) usable as a library, a CLI chat REPL, and a drop-in llama.cpp-shaped proxy server with web studio and MCP tools.
+\end{document}
