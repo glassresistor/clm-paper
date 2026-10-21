@@ -1,0 +1,71 @@
+[
+ {
+  "run": "baseline",
+  "decay_enabled": false,
+  "supersede_enabled": false,
+  "peak_tokens": 898,
+  "budget": 900,
+  "saturation_turn": 5,
+  "final_long_blocks": 26,
+  "live_codenames": 0,
+  "emitted_codenames": 30,
+  "recovered_from_archive": 30,
+  "archive_records": 174,
+  "maintain_events": {},
+  "p3_offloads": 31
+ },
+ {
+  "run": "decay",
+  "decay_enabled": true,
+  "supersede_enabled": false,
+  "peak_tokens": 886,
+  "budget": 900,
+  "saturation_turn": 5,
+  "final_long_blocks": 11,
+  "live_codenames": 1,
+  "emitted_codenames": 30,
+  "recovered_from_archive": 30,
+  "archive_records": 155,
+  "maintain_events": {
+   "maintain-decay": 45
+  },
+  "p3_offloads": 1
+ },
+ {
+  "run": "supersede",
+  "decay_enabled": false,
+  "supersede_enabled": true,
+  "peak_tokens": 897,
+  "budget": 900,
+  "saturation_turn": 19,
+  "final_long_blocks": 27,
+  "live_codenames": 0,
+  "emitted_codenames": 30,
+  "recovered_from_archive": 30,
+  "archive_records": 148,
+  "maintain_events": {
+   "maintain-supersede": 8,
+   "maintain-dedup": 19
+  },
+  "p3_offloads": 6
+ },
+ {
+  "run": "both",
+  "decay_enabled": true,
+  "supersede_enabled": true,
+  "peak_tokens": 896,
+  "budget": 900,
+  "saturation_turn": null,
+  "final_long_blocks": 7,
+  "live_codenames": 2,
+  "emitted_codenames": 30,
+  "recovered_from_archive": 30,
+  "archive_records": 157,
+  "maintain_events": {
+   "maintain-supersede": 8,
+   "maintain-decay": 27,
+   "maintain-dedup": 19
+  },
+  "p3_offloads": 0
+ }
+]

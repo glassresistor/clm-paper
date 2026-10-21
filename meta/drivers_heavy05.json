@@ -1,0 +1,62 @@
+[
+ {
+  "strat": "off",
+  "exp_sat": 5,
+  "bench_sat": 5,
+  "exp_long": 26,
+  "bench_long": 28,
+  "exp_p3": 31,
+  "bench_p3": 29,
+  "exp_arch": 174,
+  "bench_arch": 171,
+  "exp_core": 0,
+  "bench_core": 0,
+  "exp_peak": 898,
+  "bench_peak": 895
+ },
+ {
+  "strat": "decay",
+  "exp_sat": 5,
+  "bench_sat": 5,
+  "exp_long": 11,
+  "bench_long": 11,
+  "exp_p3": 1,
+  "bench_p3": 1,
+  "exp_arch": 155,
+  "bench_arch": 155,
+  "exp_core": 1,
+  "bench_core": 1,
+  "exp_peak": 886,
+  "bench_peak": 886
+ },
+ {
+  "strat": "supersede",
+  "exp_sat": 19,
+  "bench_sat": 19,
+  "exp_long": 27,
+  "bench_long": 28,
+  "exp_p3": 6,
+  "bench_p3": 25,
+  "exp_arch": 148,
+  "bench_arch": 167,
+  "exp_core": 0,
+  "bench_core": 0,
+  "exp_peak": 897,
+  "bench_peak": 895
+ },
+ {
+  "strat": "both",
+  "exp_sat": null,
+  "bench_sat": null,
+  "exp_long": 7,
+  "bench_long": 11,
+  "exp_p3": 0,
+  "bench_p3": 0,
+  "exp_arch": 157,
+  "bench_arch": 154,
+  "exp_core": 2,
+  "bench_core": 1,
+  "exp_peak": 896,
+  "bench_peak": 885
+ }
+]

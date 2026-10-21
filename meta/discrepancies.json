@@ -1,0 +1,90 @@
+[
+ {
+  "id": "D1",
+  "location": "paper/main.tex:235 (tab:forget_heavy, heavy off k=0.75)",
+  "paper_claim": "live core 2/30",
+  "measured": "0/30",
+  "severity": "minor (transcription)",
+  "suggested_fix": "set to 0/30, or move the 2/30 to the decay row where it belongs"
+ },
+ {
+  "id": "D2",
+  "location": "paper/main.tex:279 (tab:forget_adv, balanced decay)",
+  "paper_claim": "core 2/15",
+  "measured": "3/15",
+  "severity": "minor (transcription)",
+  "suggested_fix": "set to 3/15 (prose already says \"2--3/15\")"
+ },
+ {
+  "id": "D3-supersede",
+  "location": "paper/main.tex:280-282 (tab:forget_adv balanced supersede)",
+  "paper_claim": "sup column = 4",
+  "measured": "19",
+  "severity": "moderate (understates supersession by ~5x)",
+  "suggested_fix": "set to 19 (or note the table reports a different kappa)"
+ },
+ {
+  "id": "D3-sup-fast",
+  "location": "paper/main.tex:280-282 (tab:forget_adv balanced sup-fast)",
+  "paper_claim": "sup column = 4",
+  "measured": "19",
+  "severity": "moderate (understates supersession by ~5x)",
+  "suggested_fix": "set to 19 (or note the table reports a different kappa)"
+ },
+ {
+  "id": "D3-both",
+  "location": "paper/main.tex:280-282 (tab:forget_adv balanced both)",
+  "paper_claim": "sup column = 4",
+  "measured": "19",
+  "severity": "moderate (understates supersession by ~5x)",
+  "suggested_fix": "set to 19 (or note the table reports a different kappa)"
+ },
+ {
+  "id": "D4",
+  "location": "paper/main.tex:297 (prose \"Saturation breaks\")",
+  "paper_claim": "\"offload treadmill from 31 to 1 phase-3 firing\" mixes two drivers: forget_exp baseline=31, forget_bench baseline=29",
+  "measured": "forget_exp baseline P3=31; forget_bench heavy/off/0.5 P3=29",
+  "severity": "moderate (mixed provenance)",
+  "suggested_fix": "use one driver in prose: \"29 to 1\" (forget_bench) or state both"
+ },
+ {
+  "id": "D5",
+  "location": "paper/main.tex:300",
+  "paper_claim": "\"Across all 44 strategy runs\"",
+  "measured": "forget_bench has 38 runs; forget_exp adds 4 (=42, of which the 4 duplicate heavy@0.5); 44 = 38 + 6 synthetic (not strategy runs)",
+  "severity": "minor (counting)",
+  "suggested_fix": "say \"all 38 strategy runs\" or clarify that 44 includes the 6 synthetic baseline runs"
+ },
+ {
+  "id": "D6",
+  "location": "paper/main.tex (prose \"Honest costs\", tuned row)",
+  "paper_claim": "gentler curve h=40/floor 0.35 \"removes adjudication pressure but re-saturates the long tier\"",
+  "measured": "heavy tuned identical to supersede-only in ALL fields (sup=7 vs 7, sat=19, P3=25); decay never fires within 60 turns since 0.5**(60/40)=0.354 > floor",
+  "severity": "moderate (claim not supported)",
+  "suggested_fix": "state that at h=40/floor 0.35 decay is inert over a 60-turn run, so \"tuned\" reduces to supersede-only; or extend the run / lower floor"
+ },
+ {
+  "id": "D7",
+  "location": "forget_bench.py docstring + paper prose \"Duplicates never enter\"",
+  "paper_claim": "\"admitted: long-tier blocks admitted per emitted fact (baseline ~3.0 for dupheavy, both <1)\" -- metric not implemented",
+  "measured": "archived_fact_copies/emitted = 2.65 (off) vs 2.65 (both); no admitted-blocks counter exists",
+  "severity": "moderate (metric contract broken)",
+  "suggested_fix": "count long-tier admissions per emitted fact from events, or drop the claim; dedup adjudications (12-13) are real"
+ },
+ {
+  "id": "D8-off",
+  "location": "forget_exp.py vs forget_bench.py \"heavy @ kappa=0.5\"",
+  "paper_claim": "forget_exp: long=26, P3=31, arch=174, peak=898",
+  "measured": "forget_bench: long=28, P3=29, arch=171, peak=895",
+  "severity": "major (two drivers disagree on the same nominal regime; paper tables use forget_bench, prose quotes a forget_exp number)",
+  "suggested_fix": "unify message generators (ports differ: 80+i vs 80+i%19) or retire forget_exp; label every number with its driver"
+ },
+ {
+  "id": "D8-supersede",
+  "location": "forget_exp.py vs forget_bench.py \"heavy @ kappa=0.5\"",
+  "paper_claim": "forget_exp: long=27, P3=6, arch=148, peak=897",
+  "measured": "forget_bench: long=28, P3=25, arch=167, peak=895",
+  "severity": "major (two drivers disagree on the same nominal regime; paper tables use forget_bench, prose quotes a forget_exp number)",
+  "suggested_fix": "unify message generators (ports differ: 80+i vs 80+i%19) or retire forget_exp; label every number with its driver"
+ }
+]

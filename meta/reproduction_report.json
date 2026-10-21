@@ -1,0 +1,72 @@
+{
+ "environment": {
+  "python": "3.13.14",
+  "matplotlib_committed": "3.10.9",
+  "matplotlib_rerun": "3.11.2",
+  "numpy_committed": "2.5.2",
+  "numpy_rerun": "2.5.4",
+  "openai_pinned": "3.28.0",
+  "pytest": "9.1.1",
+  "venv": ".venv built from clm-mem/requirements.lock.txt + editable ./clm-mem + matplotlib"
+ },
+ "provenance": {
+  "clm_paper_head": "596650c \"added clm-mem as submodule\"",
+  "submodule_pin": "83bbc86 \"added new design langauge and forgetting meachanism\"",
+  "previous_pin": "d8d8c47 (referenced by ca209ba but ABSENT from clm-mem history)",
+  "synthetic_runs_generated_with": "bede625-era code (mirrors lack importance/last_access fields)",
+  "forget_runs_generated_with": "post-strategy code (bench mirrors already carry importance/last_access)"
+ },
+ "reproduction": [
+  {
+   "dataset": "results.json",
+   "committed_md5": "7a1ac005c500a9ab276d3bb6cd7d9a30",
+   "rerun_md5": "7a1ac005c500a9ab276d3bb6cd7d9a30",
+   "identical": true
+  },
+  {
+   "dataset": "forget_results.json",
+   "committed_md5": "b3688066795a8f1cb15959cabb1d706c",
+   "rerun_md5": "b3688066795a8f1cb15959cabb1d706c",
+   "identical": true
+  },
+  {
+   "dataset": "forget_bench.json",
+   "committed_md5": "f15c8e1ca849e832adb713812231106e",
+   "rerun_md5": "f15c8e1ca849e832adb713812231106e",
+   "identical": true
+  }
+ ],
+ "mirrors": {
+  "context_jsonl_total": 45,
+  "context_jsonl_changed": 6,
+  "changed_paths": [
+   "exp-data/heavy-0.25/context.jsonl",
+   "exp-data/heavy-0.5/context.jsonl",
+   "exp-data/heavy-0.75/context.jsonl",
+   "exp-data/balanced-0.25/context.jsonl",
+   "exp-data/balanced-0.5/context.jsonl",
+   "exp-data/balanced-0.75/context.jsonl"
+  ],
+  "context_md_changed": 0,
+  "archive_jsonl_changed": 0,
+  "cause": "Block dataclass gained importance + last_access fields serialized into jsonl mirrors; no behavioural change"
+ },
+ "figures": {
+  "pdf_bytes_identical": false,
+  "reason": "matplotlib version bump: PDF metadata/rasterisation only",
+  "pixel_fraction_differing_gt30": {
+   "tokens": 0.0855,
+   "tiers": 0.0599,
+   "phases": 0.0685,
+   "retention": 0.0372
+  },
+  "underlying_arrays_identical": true
+ },
+ "tests": {
+  "pytest_at_new_pin": "62 passed",
+  "previous_suite": "44 passing (clm-mem commit 9569701)",
+  "new_test_files": [
+   "tests/test_forgetting.py (165 lines, 8 tests)"
+  ]
+ }
+}

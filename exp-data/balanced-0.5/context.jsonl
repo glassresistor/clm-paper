@@ -1,26 +1,26 @@
-{"id": 0, "role": "system", "content": "You are managing your own context (Context-Language-Model mode). The conversation history you see may have been pruned: older chatter was deleted, some content is summarized memory, and items marked [offloaded ... -> archive.jsonl] can be retrieved on request. While you reply, wrap anything worth keeping in markers:\n<longterm>facts/decisions/IDs/specs that must survive a long time</longterm>\n<shortterm>working state needed for the next while</shortterm>\nEverything else may be deleted when the context window fills. Keep unmarked prose for your normal user-facing reply, and never tag information you have not actually been given.", "tag": "longterm", "turn": 0, "pinned": true}
-{"id": 108, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 38, "pinned": false}
-{"id": 111, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 39, "pinned": false}
-{"id": 114, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 40, "pinned": false}
-{"id": 116, "role": "user", "content": "Remember: project codename Nova-41, port 121. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 41, "pinned": false}
-{"id": 119, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 42, "pinned": false}
-{"id": 122, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 43, "pinned": false}
-{"id": 125, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 44, "pinned": false}
-{"id": 127, "role": "user", "content": "Remember: project codename Nova-45, port 125. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 45, "pinned": false}
-{"id": 130, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 46, "pinned": false}
-{"id": 133, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 47, "pinned": false}
-{"id": 136, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 48, "pinned": false}
-{"id": 138, "role": "user", "content": "Remember: project codename Nova-49, port 129. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 49, "pinned": false}
-{"id": 141, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 50, "pinned": false}
-{"id": 144, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 51, "pinned": false}
-{"id": 147, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 52, "pinned": false}
-{"id": 149, "role": "user", "content": "Remember: project codename Nova-53, port 133. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 53, "pinned": false}
-{"id": 152, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 54, "pinned": false}
-{"id": 155, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 55, "pinned": false}
-{"id": 158, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 56, "pinned": false}
-{"id": 160, "role": "user", "content": "Remember: project codename Nova-57, port 137. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 57, "pinned": false}
-{"id": 163, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 58, "pinned": false}
-{"id": 166, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 59, "pinned": false}
-{"id": 167, "role": "assistant", "content": "Noted.", "tag": "transient", "turn": 59, "pinned": false}
-{"id": 169, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 60, "pinned": false}
-{"id": 170, "role": "assistant", "content": "Noted.", "tag": "transient", "turn": 60, "pinned": false}
+{"id": 0, "role": "system", "content": "You are managing your own context (Context-Language-Model mode). The conversation history you see may have been pruned: older chatter was deleted, some content is summarized memory, and items marked [offloaded ... -> archive.jsonl] can be retrieved on request. While you reply, wrap anything worth keeping in markers:\n<longterm>facts/decisions/IDs/specs that must survive a long time</longterm>\n<shortterm>working state needed for the next while</shortterm>\nEverything else may be deleted when the context window fills. Keep unmarked prose for your normal user-facing reply, and never tag information you have not actually been given.", "tag": "longterm", "turn": 0, "pinned": true, "importance": 1.0, "last_access": 0}
+{"id": 108, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 38, "pinned": false, "importance": 1.0, "last_access": 38}
+{"id": 111, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 39, "pinned": false, "importance": 1.0, "last_access": 39}
+{"id": 114, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 40, "pinned": false, "importance": 1.0, "last_access": 40}
+{"id": 116, "role": "user", "content": "Remember: project codename Nova-41, port 121. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 41, "pinned": false, "importance": 1.0, "last_access": 41}
+{"id": 119, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 42, "pinned": false, "importance": 1.0, "last_access": 42}
+{"id": 122, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 43, "pinned": false, "importance": 1.0, "last_access": 43}
+{"id": 125, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 44, "pinned": false, "importance": 1.0, "last_access": 44}
+{"id": 127, "role": "user", "content": "Remember: project codename Nova-45, port 125. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 45, "pinned": false, "importance": 1.0, "last_access": 45}
+{"id": 130, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 46, "pinned": false, "importance": 1.0, "last_access": 46}
+{"id": 133, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 47, "pinned": false, "importance": 1.0, "last_access": 47}
+{"id": 136, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 48, "pinned": false, "importance": 1.0, "last_access": 48}
+{"id": 138, "role": "user", "content": "Remember: project codename Nova-49, port 129. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 49, "pinned": false, "importance": 1.0, "last_access": 49}
+{"id": 141, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 50, "pinned": false, "importance": 1.0, "last_access": 50}
+{"id": 144, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 51, "pinned": false, "importance": 1.0, "last_access": 51}
+{"id": 147, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 52, "pinned": false, "importance": 1.0, "last_access": 52}
+{"id": 149, "role": "user", "content": "Remember: project codename Nova-53, port 133. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 53, "pinned": false, "importance": 1.0, "last_access": 53}
+{"id": 152, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 54, "pinned": false, "importance": 1.0, "last_access": 54}
+{"id": 155, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 55, "pinned": false, "importance": 1.0, "last_access": 55}
+{"id": 158, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 56, "pinned": false, "importance": 1.0, "last_access": 56}
+{"id": 160, "role": "user", "content": "Remember: project codename Nova-57, port 137. Here is a longish status update with plenty of incidental detail that eats tokens.", "tag": "longterm", "turn": 57, "pinned": false, "importance": 1.0, "last_access": 57}
+{"id": 163, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 58, "pinned": false, "importance": 1.0, "last_access": 58}
+{"id": 166, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 59, "pinned": false, "importance": 1.0, "last_access": 59}
+{"id": 167, "role": "assistant", "content": "Noted.", "tag": "transient", "turn": 59, "pinned": false, "importance": 0.3, "last_access": 59}
+{"id": 169, "role": "assistant", "content": "User's project codename is 5-Aurora; deploy port is 805.", "tag": "longterm", "turn": 60, "pinned": false, "importance": 1.0, "last_access": 60}
+{"id": 170, "role": "assistant", "content": "Noted.", "tag": "transient", "turn": 60, "pinned": false, "importance": 0.3, "last_access": 60}
