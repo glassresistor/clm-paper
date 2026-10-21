@@ -1,0 +1,3 @@
+[submodule "clm-mem"]
+	path = clm-mem
+	url = git@github.com:glassresistor/clm-mem.git
