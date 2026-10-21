@@ -1,0 +1,91 @@
+<!-- live context mirror | turn 60 | 819/900 tokens -->
+[[CTX_TURN 0 id=0 role=system tag=longterm PINNED]]
+You are managing your own context (Context-Language-Model mode). The conversation history you see may have been pruned: older chatter was deleted, some content is summarized memory, and items marked [offloaded ... -> archive.jsonl] can be retrieved on request. While you reply, wrap anything worth keeping in markers:
+<longterm>facts/decisions/IDs/specs that must survive a long time</longterm>
+<shortterm>working state needed for the next while</shortterm>
+Everything else may be deleted when the context window fills. Keep unmarked prose for your normal user-facing reply, and never tag information you have not actually been given.
+
+[[CTX_TURN 11 id=23 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 13 id=28 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 15 id=33 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 17 id=38 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 19 id=43 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 21 id=48 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 23 id=53 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 25 id=58 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 27 id=63 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 29 id=68 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 31 id=73 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 33 id=78 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 35 id=83 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 37 id=88 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 39 id=93 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 41 id=98 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 43 id=103 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 45 id=108 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 47 id=113 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 49 id=118 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 51 id=123 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 53 id=128 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 55 id=133 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 57 id=138 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 59 id=143 role=assistant tag=longterm]]
+API key stored as KEY_44; table name is users_v44.
+
+[[CTX_TURN 59 id=144 role=assistant tag=transient]]
+Saved it.
+
+[[CTX_TURN 60 id=145 role=user tag=shortterm]]
+Still working on nova-59, note 60: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu
+
+[[CTX_TURN 60 id=146 role=assistant tag=transient]]
+Ha, good one! Anyway, continuing.
+

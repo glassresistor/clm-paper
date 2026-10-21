@@ -10,7 +10,7 @@ regimes against a deterministic stub backend.
 | Path            | What it is |
 |-----------------|------------|
 | `paper/main.tex`, `paper/main.pdf` | The report; compiles via `paper/build.sh` (locally built pdflatex format, `paper/texsrc/`, `paper/pfb/`). |
-| `clm-mem/`      | The harness source package (14 modules, 3,012 lines), its pytest suite (`tests/`) and README. Installed with `pip install -e clm-mem`. |
+| `clm-mem/`      | The harness source package (14 modules, 3,271 lines), its pytest suite (`tests/`) and README. Installed with `pip install -e clm-mem`. |
 | `clm_exp.py`    | Experiment driver: runs the real `MemoryHarness` on stub backends over two regimes x three kappa values and writes `exp-data/results.json`. |
 | `make_figs.py`  | Renders the four data figures from `exp-data/results.json`. |
 | `make_arch.py`  | Renders the architecture schematic (`fig_arch.pdf`). |

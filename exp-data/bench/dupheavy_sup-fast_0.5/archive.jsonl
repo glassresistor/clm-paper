@@ -1,0 +1,145 @@
+{"id": 4, "turn": 2, "role": "user", "tag": "longterm", "content": "as discussed, project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 12, "turn": 5, "role": "user", "tag": "longterm", "content": "as discussed, project codename Nova-4, port 84. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 20, "turn": 8, "role": "user", "tag": "longterm", "content": "as discussed, project codename Nova-7, port 87. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 2, "turn": 1, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 8, "turn": 3, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 10, "turn": 4, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 16, "turn": 6, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 18, "turn": 7, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 24, "turn": 9, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 1, "turn": 1, "role": "user", "tag": "shortterm", "content": "[superseded by #25] Remember: project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 3, "turn": 1, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 5, "turn": 2, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 71)."}
+{"id": 6, "turn": 3, "role": "user", "tag": "shortterm", "content": "[superseded by #25] confirmed again: project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 9, "turn": 4, "role": "user", "tag": "shortterm", "content": "[superseded by #25] Remember: project codename Nova-4, port 84. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 11, "turn": 4, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 26, "turn": 10, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 28, "turn": 11, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 13, "turn": 5, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 71)."}
+{"id": 14, "turn": 6, "role": "user", "tag": "shortterm", "content": "[superseded by #33] [superseded by #31] [superseded by #25] confirmed again: project codename Nova-4, port 84. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 17, "turn": 7, "role": "user", "tag": "shortterm", "content": "[superseded by #33] [superseded by #31] [superseded by #25] Remember: project codename Nova-7, port 87. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 19, "turn": 7, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 21, "turn": 8, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 71)."}
+{"id": 22, "turn": 9, "role": "user", "tag": "shortterm", "content": "[superseded by #33] [superseded by #31] [superseded by #25] confirmed again: project codename Nova-7, port 87. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 39, "turn": 15, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 32, "turn": 12, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 34, "turn": 13, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 36, "turn": 14, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 40, "turn": 15, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 25, "turn": 10, "role": "user", "tag": "shortterm", "content": "[superseded by #41] [superseded by #33] [superseded by #31] Remember: project codename Nova-10, port 90. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 27, "turn": 11, "role": "user", "tag": "shortterm", "content": "[superseded by #41] [superseded by #33] [superseded by #31] as discussed, project codename Nova-10, port 90. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 29, "turn": 11, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 30, "turn": 12, "role": "user", "tag": "shortterm", "content": "[superseded by #41] [superseded by #33] confirmed again: project codename Nova-10, port 90. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 31, "turn": 12, "role": "assistant", "tag": "shortterm", "content": "[superseded by #41] [superseded by #33] User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 42, "turn": 16, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 44, "turn": 17, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 48, "turn": 18, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 33, "turn": 13, "role": "user", "tag": "shortterm", "content": "[superseded by #49] [superseded by #47] [superseded by #41] Remember: project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 35, "turn": 14, "role": "user", "tag": "shortterm", "content": "[superseded by #49] [superseded by #47] [superseded by #41] as discussed, project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 37, "turn": 14, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 38, "turn": 15, "role": "user", "tag": "shortterm", "content": "[superseded by #49] [superseded by #47] [superseded by #41] confirmed again: project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 41, "turn": 16, "role": "user", "tag": "shortterm", "content": "[superseded by #49] [superseded by #47] Remember: project codename Nova-16, port 96. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 55, "turn": 21, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 50, "turn": 19, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 52, "turn": 20, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 56, "turn": 21, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 58, "turn": 22, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 43, "turn": 17, "role": "user", "tag": "shortterm", "content": "[superseded by #57] [superseded by #49] [superseded by #47] as discussed, project codename Nova-16, port 96. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 45, "turn": 17, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 46, "turn": 18, "role": "user", "tag": "shortterm", "content": "[superseded by #57] [superseded by #49] confirmed again: project codename Nova-16, port 96. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 47, "turn": 18, "role": "assistant", "tag": "shortterm", "content": "[superseded by #57] [superseded by #49] User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 49, "turn": 19, "role": "user", "tag": "shortterm", "content": "[superseded by #57] Remember: project codename Nova-19, port 80. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 60, "turn": 23, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 64, "turn": 24, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 66, "turn": 25, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 51, "turn": 20, "role": "user", "tag": "shortterm", "content": "[superseded by #65] [superseded by #63] [superseded by #57] as discussed, project codename Nova-19, port 80. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 53, "turn": 20, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 54, "turn": 21, "role": "user", "tag": "shortterm", "content": "[superseded by #65] [superseded by #63] [superseded by #57] confirmed again: project codename Nova-19, port 80. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 57, "turn": 22, "role": "user", "tag": "shortterm", "content": "[superseded by #65] [superseded by #63] Remember: project codename Nova-22, port 83. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 59, "turn": 23, "role": "user", "tag": "shortterm", "content": "[superseded by #65] [superseded by #63] as discussed, project codename Nova-22, port 83. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 71, "turn": 27, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 79, "turn": 30, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 68, "turn": 26, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 72, "turn": 27, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 74, "turn": 28, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 76, "turn": 29, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 61, "turn": 23, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 62, "turn": 24, "role": "user", "tag": "shortterm", "content": "[superseded by #81] [superseded by #73] [superseded by #65] confirmed again: project codename Nova-22, port 83. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 63, "turn": 24, "role": "assistant", "tag": "shortterm", "content": "[superseded by #81] [superseded by #73] [superseded by #65] User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 65, "turn": 25, "role": "user", "tag": "shortterm", "content": "[superseded by #81] [superseded by #73] Remember: project codename Nova-25, port 86. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 67, "turn": 26, "role": "user", "tag": "shortterm", "content": "[superseded by #81] [superseded by #73] as discussed, project codename Nova-25, port 86. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 69, "turn": 26, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 80, "turn": 30, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 82, "turn": 31, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 84, "turn": 32, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 70, "turn": 27, "role": "user", "tag": "shortterm", "content": "[superseded by #89] [superseded by #87] [superseded by #81] [superseded by #73] confirmed again: project codename Nova-25, port 86. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 73, "turn": 28, "role": "user", "tag": "shortterm", "content": "[superseded by #89] [superseded by #87] [superseded by #81] Remember: project codename Nova-28, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 75, "turn": 29, "role": "user", "tag": "shortterm", "content": "[superseded by #89] [superseded by #87] [superseded by #81] as discussed, project codename Nova-28, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 77, "turn": 29, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 78, "turn": 30, "role": "user", "tag": "shortterm", "content": "[superseded by #89] [superseded by #87] [superseded by #81] confirmed again: project codename Nova-28, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 95, "turn": 36, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 88, "turn": 33, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 90, "turn": 34, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 92, "turn": 35, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 96, "turn": 36, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 81, "turn": 31, "role": "user", "tag": "shortterm", "content": "[superseded by #97] [superseded by #89] [superseded by #87] Remember: project codename Nova-31, port 92. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 83, "turn": 32, "role": "user", "tag": "shortterm", "content": "[superseded by #97] [superseded by #89] [superseded by #87] as discussed, project codename Nova-31, port 92. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 85, "turn": 32, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 86, "turn": 33, "role": "user", "tag": "shortterm", "content": "[superseded by #97] [superseded by #89] confirmed again: project codename Nova-31, port 92. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 87, "turn": 33, "role": "assistant", "tag": "shortterm", "content": "[superseded by #97] [superseded by #89] User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 98, "turn": 37, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 100, "turn": 38, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 104, "turn": 39, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 89, "turn": 34, "role": "user", "tag": "shortterm", "content": "[superseded by #105] [superseded by #103] [superseded by #97] Remember: project codename Nova-34, port 95. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 91, "turn": 35, "role": "user", "tag": "shortterm", "content": "[superseded by #105] [superseded by #103] [superseded by #97] as discussed, project codename Nova-34, port 95. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 93, "turn": 35, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 94, "turn": 36, "role": "user", "tag": "shortterm", "content": "[superseded by #105] [superseded by #103] [superseded by #97] confirmed again: project codename Nova-34, port 95. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 97, "turn": 37, "role": "user", "tag": "shortterm", "content": "[superseded by #105] [superseded by #103] Remember: project codename Nova-37, port 98. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 111, "turn": 42, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 106, "turn": 40, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 108, "turn": 41, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 112, "turn": 42, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 114, "turn": 43, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 99, "turn": 38, "role": "user", "tag": "shortterm", "content": "[superseded by #113] [superseded by #105] [superseded by #103] as discussed, project codename Nova-37, port 98. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 101, "turn": 38, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 102, "turn": 39, "role": "user", "tag": "shortterm", "content": "[superseded by #113] [superseded by #105] confirmed again: project codename Nova-37, port 98. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 103, "turn": 39, "role": "assistant", "tag": "shortterm", "content": "[superseded by #113] [superseded by #105] User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 105, "turn": 40, "role": "user", "tag": "shortterm", "content": "[superseded by #113] Remember: project codename Nova-40, port 82. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 116, "turn": 44, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 120, "turn": 45, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 122, "turn": 46, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 107, "turn": 41, "role": "user", "tag": "shortterm", "content": "[superseded by #121] [superseded by #119] [superseded by #113] as discussed, project codename Nova-40, port 82. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 109, "turn": 41, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 110, "turn": 42, "role": "user", "tag": "shortterm", "content": "[superseded by #121] [superseded by #119] [superseded by #113] confirmed again: project codename Nova-40, port 82. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 113, "turn": 43, "role": "user", "tag": "shortterm", "content": "[superseded by #121] [superseded by #119] Remember: project codename Nova-43, port 85. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 115, "turn": 44, "role": "user", "tag": "shortterm", "content": "[superseded by #121] [superseded by #119] as discussed, project codename Nova-43, port 85. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 127, "turn": 48, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 135, "turn": 51, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 124, "turn": 47, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 128, "turn": 48, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 130, "turn": 49, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 132, "turn": 50, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 117, "turn": 44, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 118, "turn": 45, "role": "user", "tag": "shortterm", "content": "[superseded by #137] [superseded by #129] [superseded by #121] confirmed again: project codename Nova-43, port 85. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 119, "turn": 45, "role": "assistant", "tag": "shortterm", "content": "[superseded by #137] [superseded by #129] [superseded by #121] User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 121, "turn": 46, "role": "user", "tag": "shortterm", "content": "[superseded by #137] [superseded by #129] Remember: project codename Nova-46, port 88. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 123, "turn": 47, "role": "user", "tag": "shortterm", "content": "[superseded by #137] [superseded by #129] as discussed, project codename Nova-46, port 88. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 125, "turn": 47, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 136, "turn": 51, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 138, "turn": 52, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 140, "turn": 53, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 126, "turn": 48, "role": "user", "tag": "shortterm", "content": "[superseded by #145] [superseded by #143] [superseded by #137] [superseded by #129] confirmed again: project codename Nova-46, port 88. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 129, "turn": 49, "role": "user", "tag": "shortterm", "content": "[superseded by #145] [superseded by #143] [superseded by #137] Remember: project codename Nova-49, port 91. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 131, "turn": 50, "role": "user", "tag": "shortterm", "content": "[superseded by #145] [superseded by #143] [superseded by #137] as discussed, project codename Nova-49, port 91. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 133, "turn": 50, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 134, "turn": 51, "role": "user", "tag": "shortterm", "content": "[superseded by #145] [superseded by #143] [superseded by #137] confirmed again: project codename Nova-49, port 91. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 151, "turn": 57, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 144, "turn": 54, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 146, "turn": 55, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 148, "turn": 56, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 152, "turn": 57, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 137, "turn": 52, "role": "user", "tag": "shortterm", "content": "[superseded by #153] [superseded by #145] [superseded by #143] Remember: project codename Nova-52, port 94. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 139, "turn": 53, "role": "user", "tag": "shortterm", "content": "[superseded by #153] [superseded by #145] [superseded by #143] as discussed, project codename Nova-52, port 94. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 141, "turn": 53, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 142, "turn": 54, "role": "user", "tag": "shortterm", "content": "[superseded by #153] [superseded by #145] confirmed again: project codename Nova-52, port 94. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 143, "turn": 54, "role": "assistant", "tag": "shortterm", "content": "[superseded by #153] [superseded by #145] User's project codename is 75-Aurora; deploy port is 8075."}

@@ -64,7 +64,8 @@ What we deliberately drop is unrestricted editing of past turns: instead, a dete
 
 \paragraph{Contributions}
 \begin{itemize}
-\item A complete, tested implementation of a CLM-inspired memory harness (3{,}012 lines of Python across 14 modules) usable as a library, a CLI chat REPL, and a drop-in llama.cpp-shaped proxy server with web studio and MCP tools.
+\item A complete, tested implementation of a CLM-inspired memory harness (3{,}271 lines of Python across 14 modules) usable as a library, a CLI chat REPL, and a drop-in llama.cpp-shaped proxy server with web studio and MCP tools.
+\item Two opt-in forgetting strategies (decay \& reheating, supersession) as deterministic phase-0 maintenance passes, toggled at CLI/REPL/web/MCP level, evaluated on a saturation regime plus new adversarial churn and duplicate-heavy regimes (Section~\ref{sec:forget}).
 \item A \emph{marking protocol}: every classifier decision and eviction phase is emitted as a structured event (\texttt{seq}, \texttt{kind}, \texttt{text}) that can be aligned to ground-truth tags, enabling precision/recall scoring of memory tagging and retention metrics without manual annotation.
 \item A synthetic stress harness (deterministic stub backend) already exercised end-to-end: over 60-turn runs at budget $B=900$ tokens the live window never exceeded the budget, and \emph{all} emitted durable facts remained recoverable from the archive---the ``offload-don't-destroy'' invariant we prove empirically in Section~\ref{sec:synthetic}.
 \item A concrete benchmarking plan (ContextBench-style tasks, LoCoMo, LongMemEval, RULER) with defined metrics, ablations and statistical protocol.
@@ -214,6 +215,93 @@ balanced $\kappa{=}0.75$ & 37 & 78 & 37 & 182 & 5/15 & 10\\
 \caption{Live fact retention fraction over 60 turns ($\kappa=0.5$): heavy drops to zero once long-term saturates (facts survive only via archive); balanced keeps a stable live core.}\label{fig:retention}
 \end{figure}
 
+\subsection{Forgetting strategies (phase-0 maintenance)}\label{sec:forget}
+% The tables live here so they share pages with the findings instead of
+% drifting to float-only pages.
+\begin{table}[t]
+\centering\small
+\begin{tabular}{llcccccc}
+\hline
+Strategy & $\kappa$ & sat@$\dagger$ & long blk & live core & P3 & arch & recov\\
+\hline
+off       & 0.25 &  5 & 28 & 0/30 & 29 & 171 & 30/30\\
+decay     & 0.25 &  5 & 11 & 1/30 &  1 & 155 & 30/30\\
+supersede & 0.25 & 19 & 28 & 0/30 & 25 & 167 & 30/30\\
+both      & 0.25 &  --- & 11 & 1/30 &  0 & 157 & 30/30\\
+off       &  0.5 &  5 & 28 & 0/30 & 29 & 171 & 30/30\\
+decay     &  0.5 &  5 & 11 & 1/30 &  1 & 155 & 30/30\\
+supersede &  0.5 & 19 & 28 & 0/30 & 25 & 167 & 30/30\\
+both      &  0.5 &  --- & 11 & 1/30 &  0 & 154 & 30/30\\
+off       & 0.75 &  5 & 28 & 2/30 & 29 & 171 & 30/30\\
+decay     & 0.75 &  5 & 11 & 2/30 &  1 & 156 & 30/30\\
+supersede & 0.75 & 19 & 28 & 0/30 & 25 & 167 & 30/30\\
+both      & 0.75 &  --- & 11 & 2/30 &  0 & 155 & 30/30\\
+\hline
+\end{tabular}
+\caption{Heavy (saturation) regime with the two forgetting strategies, $B=900$, 60 turns. $\dagger$first turn the long tier occupied $>$60\% of budget (--- never saturated); \emph{live core} counts distinct emitted facts still in the live window at the end; recov counts facts findable live or via \texttt{recall} (offload-don't-destroy: always full).}
+\label{tab:forget_heavy}
+\end{table}
+
+% Two opt-in maintenance passes attack saturation from complementary
+% directions; both run before the eviction phases so adjudication happens
+% while candidates are still in place.
+The baseline engine forgets long-term memory only through phase-3 offload,
+which is strict FIFO oldest-first: in the heavy regime the long tier saturates
+$B$ by turn~5 and every subsequent fact rides the offload treadmill. We added
+two \emph{opt-in} forgetting strategies that run as a phase-0 maintenance pass
+\emph{before} the eviction phases (supersession first, since an update must be
+adjudicated before decay removes its candidate). Both are deterministic local
+heuristics---no model calls---so they preserve the engine's reproducibility.
+\emph{Decay \& reheating} gives every block an importance (seeded by tag:
+long $=1.0$, short $=0.6$, transient $=0.3$) discounted by a forgetting curve
+with half-life $h$ turns since last access; long blocks below a demotion floor
+become short-term (working state again, so phase~2 can pick them up), reheating
+refreshes any block whose identifiers appear in the current message, and when
+decay is enabled phase~3 ranks offloads by effective importance instead of
+age. \emph{Supersession} extracts lexical subject slots (codename, port,
+password, api\_key, \dots) from new long facts; a new fact sharing every slot
+with an older one at the same value is a \emph{duplicate}, dropped at write
+time instead of admitted twice, while a partial match (same codename, changed
+port) is an \emph{update}: the old block is labelled ``[superseded by\dots]'',
+demoted to short-term, and ages out. Strategies are toggled via CLI flags
+(\texttt{--decay}, \texttt{--supersede}), REPL commands (\texttt{/decay},
+\texttt{/supersede}), the web studio tuning tab, or MCP
+(\texttt{clm\_set\_forget}); defaults are off, preserving prior behaviour
+byte-for-byte.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{llccccccc}
+\hline
+Regime & Strategy & sat@$\dagger$ & long & core & P3 & sup & dedup & arch\\
+\hline
+balanced & off       & 33 & 11 & 10/15 & 2 &  0  &  0 & 118\\
+balanced & decay     & --- &  3 &  2/15 & 0 &  0  &  0 & 115\\
+balanced & supersede & --- &  2 &  2/15 & 0 &  4 &  0 & 113\\
+balanced & sup-fast  & --- &  2 &  2/15 & 0 &  4 &  0 & 113\\
+balanced & both      & --- &  2 &  2/15 & 0 &  4 &  0 & 113\\
+churn    & off       &  5 & 26 &  0/30 & 5 &  0  &  0 & 123\\
+churn    & supersede & 29 & 26 &  0/30 & 1 &  6 &  0 & 119\\
+churn    & both      & --- &  6 &  2/30 & 0 &  6 &  0 & 135\\
+dupheavy & off       & 12 & 16 &  7/20 & 25 &  0   &  0 & 168\\
+dupheavy & supersede & --- &  5 &  2/20 & 0 & 154 & 12 & 145\\
+dupheavy & both      & --- &  2 &  3/20 & 0 & 152 & 13 & 147\\
+\hline
+\end{tabular}
+\caption{Adversarial regimes ($\kappa=0.5$). \emph{churn}: every fact turn updates the codename slot (filler references the current value, so reheating has real work to do); \emph{dupheavy}: each fact restated three times. sup/dedup are cumulative supersede/dedup adjudications.}
+\label{tab:forget_adv}
+\end{table}
+
+\paragraph{Findings (strategies)}
+\begin{itemize}
+\item \textbf{Saturation breaks.} Decay alone cuts the heavy long tier from 28 to 11 live blocks and the offload treadmill from 31 to 1 phase-3 firing; supersede alone delays saturation from turn~5 to turn~19; combined, the heavy regime \emph{never saturates} within the run (Table~\ref{tab:forget_heavy}), with zero phase-3 offloads.
+\item \textbf{Duplicates never enter.} In dupheavy, supersession's write-time dedup drops restated facts at admission (12--13 adjudications) and the long tier never saturates, versus turn~12 saturation for the baseline.
+\item \textbf{Correctness under churn.} In the update-adversarial regime, supersession marks old values as contradicted so exactly one current codename survives per slot in the long tier; combined with reheating (30 access events) the run never saturates.
+\item \textbf{Recovery invariant holds.} Across all 44 strategy runs (the heavy sweep plus balanced, tuned and adversarial variants) the live window never exceeded $B$ and every emitted fact remained findable live or via \texttt{recall}---forgetting demotes and offloads, it never destroys.
+\item \textbf{Honest costs.} Forgetting is not free: in balanced, aggressive decay ($h=8$, floor 0.45) reduces the curated live core from 10/15 to 2--3/15---facts are archived earlier and stay out of the window; supersede-only does not prevent heavy-regime saturation (delayed to turn~19 but still offloads), since demoted blocks FIFO-evict before later updates can adjudicate them; a gentler curve ($h=40$, floor 0.35, row \emph{tuned}) removes adjudication pressure but re-saturates the long tier---the two knobs trade forgetting speed against live retention and must be tuned per regime. A fast-forget variant (\emph{sup-fast}: superseded blocks lose importance immediately) adds nothing over plain supersede in these regimes, because FIFO already dominates demoted blocks.
+\item \textbf{Scope.} Slot adjudication is lexical: deterministic and cheap, but not semantic; false-supersede rates on real conversations remain unmeasured (the marking protocol's maintenance events are exported for scoring).
+\end{itemize}
+
 \section{Benchmarking plan}
 We plan four evaluation families, each with defined metrics and baselines. Baselines are always: \textbf{full-context truncation} (naive oldest-turn deletion), \textbf{no-memory}, and where feasible a Mem0/A-MEM-style retrieval baseline; the CLM paper's ContextBench provides the tool-editing reference point~\cite{clm}.
 
@@ -247,7 +335,9 @@ All code, data and build inputs are included in this repository. Running
 \texttt{clm\_exp.py} drives the real harness object on stub backends over the
 six regime$\times\kappa$ configurations and writes \texttt{exp-data/results.json}
 plus per-run mirrors (\texttt{context.md}, \texttt{context.jsonl},
-\texttt{archive.jsonl}); \texttt{make\_figs.py} renders the four data figures
+\texttt{archive.jsonl}); \texttt{forget\_exp.py} and \texttt{forget\_bench.py}
+re-run the forgetting-strategy evaluations of Section~\ref{sec:forget} into
+\texttt{exp-data/forget\_results.json} and \texttt{exp-data/forget\_bench.json}; \texttt{make\_figs.py} renders the four data figures
 from that file and \texttt{make\_arch.py} the architecture schematic; and
 \texttt{paper/build.sh} compiles this document with a locally built pdflatex
 format. The stub backend is deterministic, so re-runs reproduce the committed

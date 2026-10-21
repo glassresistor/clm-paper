@@ -1,0 +1,118 @@
+{"id": 2, "turn": 1, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 5, "turn": 2, "role": "assistant", "tag": "transient", "content": "Remember: final decision v42 ships Friday with schema rev 42."}
+{"id": 8, "turn": 3, "role": "assistant", "tag": "transient", "content": "Remember: final decision v42 ships Friday with schema rev 42."}
+{"id": 11, "turn": 4, "role": "assistant", "tag": "transient", "content": "Remember: final decision v42 ships Friday with schema rev 42."}
+{"id": 14, "turn": 5, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 17, "turn": 6, "role": "assistant", "tag": "transient", "content": "Remember: final decision v42 ships Friday with schema rev 42."}
+{"id": 20, "turn": 7, "role": "assistant", "tag": "transient", "content": "Remember: final decision v42 ships Friday with schema rev 42."}
+{"id": 23, "turn": 8, "role": "assistant", "tag": "transient", "content": "Remember: final decision v42 ships Friday with schema rev 42."}
+{"id": 1, "turn": 1, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 3, "turn": 1, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 4, "turn": 2, "role": "user", "tag": "shortterm", "content": "Quick temp note 2: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 6, "turn": 2, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 42"}
+{"id": 7, "turn": 3, "role": "user", "tag": "shortterm", "content": "Quick temp note 3: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 9, "turn": 3, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 42"}
+{"id": 10, "turn": 4, "role": "user", "tag": "shortterm", "content": "Quick temp note 4: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 12, "turn": 4, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 42"}
+{"id": 13, "turn": 5, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-5, port 85. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 15, "turn": 5, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 16, "turn": 6, "role": "user", "tag": "shortterm", "content": "Quick temp note 6: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 18, "turn": 6, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 42"}
+{"id": 19, "turn": 7, "role": "user", "tag": "shortterm", "content": "Quick temp note 7: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 21, "turn": 7, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 42"}
+{"id": 22, "turn": 8, "role": "user", "tag": "shortterm", "content": "Quick temp note 8: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 26, "turn": 9, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 29, "turn": 10, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 31, "turn": 11, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 33, "turn": 12, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 35, "turn": 13, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 37, "turn": 14, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 39, "turn": 15, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 41, "turn": 16, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 43, "turn": 17, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 45, "turn": 18, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 24, "turn": 8, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 42"}
+{"id": 25, "turn": 9, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-9, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 27, "turn": 9, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 28, "turn": 10, "role": "user", "tag": "shortterm", "content": "Quick temp note 10: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 30, "turn": 11, "role": "user", "tag": "shortterm", "content": "Quick temp note 11: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 32, "turn": 12, "role": "user", "tag": "shortterm", "content": "Quick temp note 12: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 36, "turn": 14, "role": "user", "tag": "shortterm", "content": "Quick temp note 14: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 38, "turn": 15, "role": "user", "tag": "shortterm", "content": "Quick temp note 15: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 40, "turn": 16, "role": "user", "tag": "shortterm", "content": "Quick temp note 16: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 47, "turn": 19, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 49, "turn": 20, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 51, "turn": 21, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 53, "turn": 22, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 55, "turn": 23, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 57, "turn": 24, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 59, "turn": 25, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 61, "turn": 26, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 44, "turn": 18, "role": "user", "tag": "shortterm", "content": "Quick temp note 18: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 46, "turn": 19, "role": "user", "tag": "shortterm", "content": "Quick temp note 19: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 48, "turn": 20, "role": "user", "tag": "shortterm", "content": "Quick temp note 20: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 52, "turn": 22, "role": "user", "tag": "shortterm", "content": "Quick temp note 22: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 54, "turn": 23, "role": "user", "tag": "shortterm", "content": "Quick temp note 23: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 56, "turn": 24, "role": "user", "tag": "shortterm", "content": "Quick temp note 24: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 63, "turn": 27, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 65, "turn": 28, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 67, "turn": 29, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 69, "turn": 30, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 71, "turn": 31, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 60, "turn": 26, "role": "user", "tag": "shortterm", "content": "Quick temp note 26: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 62, "turn": 27, "role": "user", "tag": "shortterm", "content": "Quick temp note 27: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 64, "turn": 28, "role": "user", "tag": "shortterm", "content": "Quick temp note 28: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 68, "turn": 30, "role": "user", "tag": "shortterm", "content": "Quick temp note 30: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 70, "turn": 31, "role": "user", "tag": "shortterm", "content": "Quick temp note 31: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 73, "turn": 32, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 75, "turn": 33, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 77, "turn": 34, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 79, "turn": 35, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 81, "turn": 36, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 72, "turn": 32, "role": "user", "tag": "shortterm", "content": "Quick temp note 32: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 76, "turn": 34, "role": "user", "tag": "shortterm", "content": "Quick temp note 34: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 78, "turn": 35, "role": "user", "tag": "shortterm", "content": "Quick temp note 35: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 80, "turn": 36, "role": "user", "tag": "shortterm", "content": "Quick temp note 36: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 83, "turn": 37, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 85, "turn": 38, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 87, "turn": 39, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 89, "turn": 40, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 84, "turn": 38, "role": "user", "tag": "shortterm", "content": "Quick temp note 38: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 86, "turn": 39, "role": "user", "tag": "shortterm", "content": "Quick temp note 39: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 88, "turn": 40, "role": "user", "tag": "shortterm", "content": "Quick temp note 40: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 91, "turn": 41, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 93, "turn": 42, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 95, "turn": 43, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 92, "turn": 42, "role": "user", "tag": "shortterm", "content": "Quick temp note 42: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 94, "turn": 43, "role": "user", "tag": "shortterm", "content": "Quick temp note 43: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 96, "turn": 44, "role": "user", "tag": "shortterm", "content": "Quick temp note 44: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 97, "turn": 44, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 99, "turn": 45, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 101, "turn": 46, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 100, "turn": 46, "role": "user", "tag": "shortterm", "content": "Quick temp note 46: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 102, "turn": 47, "role": "user", "tag": "shortterm", "content": "Quick temp note 47: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 103, "turn": 47, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 105, "turn": 48, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 104, "turn": 48, "role": "user", "tag": "shortterm", "content": "Quick temp note 48: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 107, "turn": 49, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 108, "turn": 50, "role": "user", "tag": "shortterm", "content": "Quick temp note 50: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 109, "turn": 50, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 110, "turn": 51, "role": "user", "tag": "shortterm", "content": "Quick temp note 51: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 111, "turn": 51, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 112, "turn": 52, "role": "user", "tag": "shortterm", "content": "Quick temp note 52: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 113, "turn": 52, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 34, "turn": 13, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 34, "turn": 13, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #34 -> archive.jsonl]"}
+{"id": 116, "turn": 54, "role": "user", "tag": "shortterm", "content": "Quick temp note 54: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 115, "turn": 53, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 117, "turn": 54, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 118, "turn": 55, "role": "user", "tag": "shortterm", "content": "Quick temp note 55: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 119, "turn": 55, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 120, "turn": 56, "role": "user", "tag": "shortterm", "content": "Quick temp note 56: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 121, "turn": 56, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 42, "turn": 17, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-17, port 97. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 42, "turn": 17, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #42 -> archive.jsonl]"}
+{"id": 124, "turn": 58, "role": "user", "tag": "shortterm", "content": "Quick temp note 58: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 123, "turn": 57, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 125, "turn": 58, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 126, "turn": 59, "role": "user", "tag": "shortterm", "content": "Quick temp note 59: Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}

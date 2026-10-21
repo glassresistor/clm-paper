@@ -1,0 +1,168 @@
+{"id": 2, "turn": 1, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 8, "turn": 3, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 10, "turn": 4, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 16, "turn": 6, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 18, "turn": 7, "role": "assistant", "tag": "transient", "content": "Remember: final decision v67 ships Friday with schema rev 67."}
+{"id": 1, "turn": 1, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 3, "turn": 1, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 5, "turn": 2, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 71)."}
+{"id": 6, "turn": 3, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 9, "turn": 4, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-4, port 84. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 11, "turn": 4, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 24, "turn": 9, "role": "assistant", "tag": "transient", "content": "Saved it."}
+{"id": 26, "turn": 10, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 13, "turn": 5, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 71)."}
+{"id": 14, "turn": 6, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-4, port 84. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 17, "turn": 7, "role": "user", "tag": "shortterm", "content": "Remember: project codename Nova-7, port 87. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 19, "turn": 7, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 67"}
+{"id": 28, "turn": 11, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 32, "turn": 12, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 21, "turn": 8, "role": "assistant", "tag": "shortterm", "content": "Sure -- working through it now. Step A done, step B pending (call 71)."}
+{"id": 22, "turn": 9, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-7, port 87. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 27, "turn": 11, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-10, port 90. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 34, "turn": 13, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 36, "turn": 14, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 29, "turn": 11, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 30, "turn": 12, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-10, port 90. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 35, "turn": 14, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 40, "turn": 15, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 42, "turn": 16, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 37, "turn": 14, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 38, "turn": 15, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 44, "turn": 17, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 43, "turn": 17, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-16, port 96. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 45, "turn": 17, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 48, "turn": 18, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 46, "turn": 18, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-16, port 96. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 50, "turn": 19, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 51, "turn": 20, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-19, port 80. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 52, "turn": 20, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 53, "turn": 20, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 54, "turn": 21, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-19, port 80. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 56, "turn": 21, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 4, "turn": 2, "role": "user", "tag": "longterm", "content": "as discussed, project codename Nova-1, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 4, "turn": 2, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #4 -> archive.jsonl]"}
+{"id": 59, "turn": 23, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-22, port 83. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 58, "turn": 22, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 61, "turn": 23, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 62, "turn": 24, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-22, port 83. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 60, "turn": 23, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 64, "turn": 24, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 7, "turn": 3, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_74; table name is users_v74."}
+{"id": 12, "turn": 5, "role": "user", "tag": "longterm", "content": "as discussed, project codename Nova-4, port 84. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 15, "turn": 6, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_74; table name is users_v74."}
+{"id": 20, "turn": 8, "role": "user", "tag": "longterm", "content": "as discussed, project codename Nova-7, port 87. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 66, "turn": 25, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 7, "turn": 3, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #7 -> archive.jsonl]"}
+{"id": 12, "turn": 5, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #12 -> archive.jsonl]"}
+{"id": 15, "turn": 6, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #15 -> archive.jsonl]"}
+{"id": 20, "turn": 8, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #20 -> archive.jsonl]"}
+{"id": 67, "turn": 26, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-25, port 86. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 68, "turn": 26, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 72, "turn": 27, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 69, "turn": 26, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 70, "turn": 27, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-25, port 86. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 75, "turn": 29, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-28, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 74, "turn": 28, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 77, "turn": 29, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 78, "turn": 30, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-28, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 76, "turn": 29, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 80, "turn": 30, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 23, "turn": 9, "role": "assistant", "tag": "longterm", "content": "API key stored as KEY_74; table name is users_v74."}
+{"id": 25, "turn": 10, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-10, port 90. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 31, "turn": 12, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 33, "turn": 13, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-13, port 93. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 82, "turn": 31, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 23, "turn": 9, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #23 -> archive.jsonl]"}
+{"id": 25, "turn": 10, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #25 -> archive.jsonl]"}
+{"id": 31, "turn": 12, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #31 -> archive.jsonl]"}
+{"id": 33, "turn": 13, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #33 -> archive.jsonl]"}
+{"id": 83, "turn": 32, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-31, port 92. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 84, "turn": 32, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 88, "turn": 33, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 85, "turn": 32, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 86, "turn": 33, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-31, port 92. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 91, "turn": 35, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-34, port 95. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 90, "turn": 34, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 93, "turn": 35, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 94, "turn": 36, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-34, port 95. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 92, "turn": 35, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 39, "turn": 15, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 96, "turn": 36, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 39, "turn": 15, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #39 -> archive.jsonl]"}
+{"id": 41, "turn": 16, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-16, port 96. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 41, "turn": 16, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #41 -> archive.jsonl]"}
+{"id": 99, "turn": 38, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-37, port 98. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 98, "turn": 37, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 101, "turn": 38, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 102, "turn": 39, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-37, port 98. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 100, "turn": 38, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 47, "turn": 18, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 104, "turn": 39, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 47, "turn": 18, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #47 -> archive.jsonl]"}
+{"id": 49, "turn": 19, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-19, port 80. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 49, "turn": 19, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #49 -> archive.jsonl]"}
+{"id": 107, "turn": 41, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-40, port 82. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 106, "turn": 40, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 109, "turn": 41, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 110, "turn": 42, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-40, port 82. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 108, "turn": 41, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 55, "turn": 21, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 112, "turn": 42, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 55, "turn": 21, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #55 -> archive.jsonl]"}
+{"id": 57, "turn": 22, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-22, port 83. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 57, "turn": 22, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #57 -> archive.jsonl]"}
+{"id": 115, "turn": 44, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-43, port 85. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 114, "turn": 43, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 117, "turn": 44, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 118, "turn": 45, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-43, port 85. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 116, "turn": 44, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 63, "turn": 24, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 120, "turn": 45, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 63, "turn": 24, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #63 -> archive.jsonl]"}
+{"id": 65, "turn": 25, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-25, port 86. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 65, "turn": 25, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #65 -> archive.jsonl]"}
+{"id": 123, "turn": 47, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-46, port 88. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 122, "turn": 46, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 125, "turn": 47, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 126, "turn": 48, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-46, port 88. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 124, "turn": 47, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 71, "turn": 27, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 128, "turn": 48, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 71, "turn": 27, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #71 -> archive.jsonl]"}
+{"id": 73, "turn": 28, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-28, port 89. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 73, "turn": 28, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #73 -> archive.jsonl]"}
+{"id": 131, "turn": 50, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-49, port 91. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 130, "turn": 49, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 133, "turn": 50, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 134, "turn": 51, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-49, port 91. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 132, "turn": 50, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 79, "turn": 30, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 136, "turn": 51, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 79, "turn": 30, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #79 -> archive.jsonl]"}
+{"id": 81, "turn": 31, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-31, port 92. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 81, "turn": 31, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #81 -> archive.jsonl]"}
+{"id": 139, "turn": 53, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-52, port 94. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 138, "turn": 52, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 141, "turn": 53, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 142, "turn": 54, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-52, port 94. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 140, "turn": 53, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 87, "turn": 33, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 144, "turn": 54, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 87, "turn": 33, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #87 -> archive.jsonl]"}
+{"id": 89, "turn": 34, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-34, port 95. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 89, "turn": 34, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #89 -> archive.jsonl]"}
+{"id": 147, "turn": 56, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-55, port 97. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 146, "turn": 55, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 149, "turn": 56, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 150, "turn": 57, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-55, port 97. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 148, "turn": 56, "role": "assistant", "tag": "transient", "content": "Remember: final decision v72 ships Friday with schema rev 72."}
+{"id": 95, "turn": 36, "role": "assistant", "tag": "longterm", "content": "User's project codename is 75-Aurora; deploy port is 8075."}
+{"id": 152, "turn": 57, "role": "assistant", "tag": "transient", "content": "Noted."}
+{"id": 95, "turn": 36, "role": "assistant", "tag": "shortterm", "content": "[offloaded longterm #95 -> archive.jsonl]"}
+{"id": 97, "turn": 37, "role": "user", "tag": "longterm", "content": "Remember: project codename Nova-37, port 98. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 97, "turn": 37, "role": "user", "tag": "shortterm", "content": "[offloaded longterm #97 -> archive.jsonl]"}
+{"id": 155, "turn": 59, "role": "user", "tag": "shortterm", "content": "as discussed, project codename Nova-58, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}
+{"id": 154, "turn": 58, "role": "assistant", "tag": "transient", "content": "Ha, good one! Anyway, continuing."}
+{"id": 157, "turn": 59, "role": "assistant", "tag": "shortterm", "content": "open item: review diff 72"}
+{"id": 158, "turn": 60, "role": "user", "tag": "shortterm", "content": "confirmed again: project codename Nova-58, port 81. Here is a longish status update with plenty of incidental detail that eats tokens while we work. Here is a longish statu"}

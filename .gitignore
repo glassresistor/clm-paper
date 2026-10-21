@@ -29,3 +29,20 @@ unsloth-tmp/
 miniforge.sh
 filelist.txt
 studio_exec_*.py
+
+# local smoke/debug artifacts
+serve-fg.log
+demo-fg1/
+studio_exec*.py
+
+# stray debug dirs
+exp-data/dbg*/
+icons/
+preview*/
+artifacts/
+clm-mem/ux/
+clm-mem/ux-capture/
+# debug scratch (untracked, not part of artifact)
+exp-data/dbg*/
+exp-data/forget/*_dbg/
+exp-data/forget/*_dbg/
